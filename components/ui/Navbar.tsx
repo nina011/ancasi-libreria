@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 
-import { AppBar, Toolbar, Link, Typography, Button, Box, IconButton } from "@mui/material"
-import { SearchOutlined } from '@mui/icons-material'
+import { AppBar, Toolbar, Link, Typography, Button, Box, IconButton, Badge } from "@mui/material"
+import { SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
 
 export const Navbar = () => {
   return (
@@ -19,7 +19,11 @@ export const Navbar = () => {
             {/* TODO FLEX */}
             <Box flex={ 1 }/>
 
-            <Box>
+            <Box sx={{ display: { 
+                xs: 'none',
+                sm: 'block'
+                }
+            }}>
                 <NextLink  href='/category/men' passHref legacyBehavior>
                     <Link>
                         <Button>
@@ -28,7 +32,7 @@ export const Navbar = () => {
                     </Link>
                 </NextLink>
             
-                <NextLink legacyBehavior href='/category/women' passHref legacyBehavior>
+                <NextLink  href='/category/women' passHref legacyBehavior>
                     <Link>
                         <Button>
                             Mujeres
@@ -36,7 +40,7 @@ export const Navbar = () => {
                     </Link>
                 </NextLink>
                 
-                <NextLink legacyBehavior href='/category/kid' passHref legacyBehavior>
+                <NextLink  href='/category/kid' passHref legacyBehavior>
                     <Link>
                         <Button>
                             Niños
@@ -45,12 +49,26 @@ export const Navbar = () => {
                 </NextLink>
             </Box>
 
-            {/* <Box flex={ 1 } /> */}
+            <Box flex={ 1 } />
 
             <IconButton>
                 <SearchOutlined />+
             </IconButton>
             {/* TODO FLEX */}
+
+            <NextLink href={'/cart'} passHref legacyBehavior>
+                <Link>
+                    <IconButton>
+                        <Badge badgeContent={ 2 } color='secondary'>
+                            <ShoppingCartOutlined />
+                        </Badge>
+                    </IconButton>
+                </Link>
+            </NextLink>
+
+            <Button>
+                Menú
+            </Button>
         </Toolbar>
     </AppBar>
   )
