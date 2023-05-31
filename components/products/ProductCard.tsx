@@ -26,15 +26,19 @@ export const ProductCard: FC<Props> = ({ product }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Card>
+            <Card
+                key={product._id}
+            >
                 <NextLink 
                     href='/product/slug' 
                     passHref
                     prefetch={ false }
+                    legacyBehavior
                     >
                     <Link>
                         <CardActionArea>
                             <CardMedia
+                                key={product._id}
                                 component={'img'}
                                 className='fadeIn'
                                 image={productImage}

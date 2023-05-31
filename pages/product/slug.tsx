@@ -2,6 +2,8 @@ import React from 'react'
 import { ShopLayout } from '../../components/layouts'
 import { initialData } from '../../database/products'
 import { Box, Button, Chip, Grid, Typography } from '@mui/material'
+import { ProductSlideShow } from '../../components/products'
+import SizeSelector from '../../components/products/SizeSelector'
 
 const product = initialData.products[0]
 
@@ -20,7 +22,9 @@ const ProductPage = () => {
           xs={12}
           sm={7}
         >
-          {/** slider show */}
+          <ProductSlideShow 
+            images={ product.images }
+          />
         </Grid>
 
         <Grid
@@ -50,6 +54,11 @@ const ProductPage = () => {
             <Box
               sx={{ my: 12 }}
             >
+              {/* <ItemCounter />  */}
+              <SizeSelector 
+                selectedSize={ product.sizes[0] }
+                sizes={ product.sizes }
+              />
               <Typography
                 variant='subtitle2'
                 >
