@@ -6,6 +6,7 @@ import { ProductSlideShow } from '../../components/products'
 import SizeSelector from '../../components/products/SizeSelector'
 
 const product = initialData.products[0]
+console.log('product ', product)
 
 const ProductPage = () => {
   return (
@@ -56,7 +57,7 @@ const ProductPage = () => {
             >
               {/* <ItemCounter />  */}
               <SizeSelector 
-                selectedSize={ product.sizes[0] }
+                // selectedSize={ product.sizes[0] }
                 sizes={ product.sizes }
               />
               <Typography
@@ -64,7 +65,6 @@ const ProductPage = () => {
                 >
                   Cantidad
                 </Typography>
-                {/* item counter */}
             </Box>
 
             {/** agregar al carrito  */}
