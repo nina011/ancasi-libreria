@@ -1,4 +1,4 @@
-import NextLink from 'next/link'
+import NextLink from 'next/link';
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { AuthLayout } from "../../components/layouts"
 
