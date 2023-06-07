@@ -11,7 +11,6 @@ const mongoConnection = {
 }
 
 export const connect = async() => {
-    console.log('CONECTANDO....', process.env.MONGO_URL)
 
     if ( mongoConnection.isConnected ) {
         console.log('Ya estabamos conectados');
@@ -29,9 +28,9 @@ export const connect = async() => {
         await mongoose.disconnect();
     }
 
-    const res = await mongoose.connect( process.env.MONGO_URL || '');
+    const res = await mongoose.connect( 'mongodb://localhost:27017/teslodb'|| '');
     mongoConnection.isConnected = 1;
-    console.log('Conectado a MongoDB:', process.env.MONGO_URL );
+    console.log('Conectado a MongoDB:', res );
 }
 
 export const disconnect = async() => {
