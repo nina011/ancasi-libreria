@@ -1,11 +1,20 @@
 import type { NextPage } from 'next'
 import { ShopLayout } from '../components/layouts'
 import { Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
-import { initialData } from '../database/products'
+// import { initialData } from '../database/products'
 import ProductList from '../components/products/ProductList'
 import { IProduct } from '../interfaces'
+import { useProducts } from '../hooks'
+import { FullScreenLoading } from '../components/ui'
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
+  // const { data, error } = useSWR('/api/products', fetcher)
+
+  // if(error) return <div>failed to load</div>
+  // if(!data) return <div>loading...</div>
+
+  const { products, isLoading } = useProducts('/products');
+
   return (
     <ShopLayout 
         title={'Teslo-Shop - Home'}
@@ -43,13 +52,13 @@ const Home: NextPage = () => {
           ))
         }
       </Grid> */}
-
-      <ProductList 
-          products={initialData.products as IProduct[]}      
-      />
-
+      {
+        isLoading 
+          ? <FullScreenLoading />
+          : <ProductList products={ products } />
+      }
     </ShopLayout>
   )
 }
 
-export default Home
+export default HomePage
