@@ -28,9 +28,8 @@ export const connect = async() => {
         await mongoose.disconnect();
     }
 
-    const res = await mongoose.connect( 'mongodb://localhost:27017/teslodb'|| '');
+    const res = await mongoose.connect( process.env.MONGO_URL || '');
     mongoConnection.isConnected = 1;
-    console.log('Conectado a MongoDB:', res );
 }
 
 export const disconnect = async() => {
