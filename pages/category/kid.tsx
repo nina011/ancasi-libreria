@@ -33,8 +33,7 @@ const KidsPage: NextPage = () => {
       >
         Productos para niños
       </Typography>
-
-
+      
       <Grid container spacing={4}>
         {
           products.map( product => (
