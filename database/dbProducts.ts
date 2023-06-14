@@ -1,4 +1,3 @@
-import { nlNL } from "@mui/x-data-grid"
 import { db } from "."
 import { IProduct } from "../interfaces"
 import { Product } from "../models"

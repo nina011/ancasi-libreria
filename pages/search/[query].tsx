@@ -53,9 +53,6 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
             </Typography>
           </Box>
       }
-
-
-
       <ProductList
         products={products}
       />
@@ -83,7 +80,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   if (!foundProducts) {
     products = await dbProducts.getAllProducts()
-    console.log({ products })
   }
 
   return {
