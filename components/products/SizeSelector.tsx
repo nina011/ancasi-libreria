@@ -13,7 +13,7 @@ const SizeSelector:FC<Props> = ({ selectedSize, sizes }) => {
 return (
     <Box>
         {
-            sizes.map( sz => (
+            sizes?.map( sz => (
                 <Button
                     key={ sz }
                     size="small"

@@ -6,7 +6,7 @@ const productSchema = new Schema({
     images: [{ type: String }],
     inStock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
-    size: [{
+    sizes: [{
         type: String, 
         enum: {
             values: ['XS','S','M','L','XL','XXL'],

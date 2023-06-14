@@ -13,7 +13,6 @@ export default async function handler(
     
     if(process.env.NODE_ENV === 'production'){
         return res.status(401).json({ message: 'No tiene acceso a este API' });
-
     }
 
     await db.connect()
