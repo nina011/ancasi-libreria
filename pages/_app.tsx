@@ -7,22 +7,25 @@ import { SWRConfig } from 'swr/_internal'
 
 import { lightTheme } from '../themes'
 import { UiProvider } from '../context'
+import { CartProvider } from '../context/cart'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  
-  return(
+
+  return (
     <SWRConfig
       value={{
         // refreshInterval: 500,
         fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
-      }}  
+      }}
     >
-      <UiProvider>
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
+      <CartProvider>
+        <UiProvider>
+          <ThemeProvider theme={lightTheme}>
+            <CssBaseline />
             <Component {...pageProps} />
-        </ThemeProvider>
-      </UiProvider>
+          </ThemeProvider>
+        </UiProvider>
+      </CartProvider>
     </SWRConfig>
   )
 }
