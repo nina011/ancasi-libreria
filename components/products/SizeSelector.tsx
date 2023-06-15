@@ -20,9 +20,7 @@ return (
                     key={ sz }
                     size="small"
                     color={ selectedSize === sz ? 'primary' : 'info'}
-                    onClick={
-                        () => onSelectedSize(sz)
-                    }
+                    onClick={() => onSelectedSize(sz)}
                 >
                    { sz }
                 </Button>

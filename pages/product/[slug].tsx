@@ -10,6 +10,7 @@ import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'ne
 import { ICartProduct, IProduct, ISize } from '../../interfaces'
 import { NextServer } from 'next/dist/server/next'
 import { dbProducts } from '../../database'
+import { ItemCounter } from '../../components/ui'
 
 // const product = initialData.products[0]
 
@@ -34,6 +35,13 @@ const ProductPage:NextPage<Props> = ({ product }) => {
     setTempCartProduct(currentProduct => ({
       ...currentProduct,
       size: size
+    }))
+  }
+
+  const onUpdateQuantity = (newQuantity: number) => {
+    setTempCartProduct(currentProduct => ({
+      ...currentProduct,
+      quantity: newQuantity
     }))
   }
 
@@ -83,7 +91,12 @@ const ProductPage:NextPage<Props> = ({ product }) => {
             <Box
               sx={{ my: 12 }}
             >
-              {/* <ItemCounter />  */}
+              <ItemCounter 
+                currentValue={tempCartProduct.quantity}
+                updatedQuantity={onUpdateQuantity} 
+                maxValue={ product.inStock > 5 ? 5 : product.inStock }              
+              />
+
               <SizeSelector 
                 selectedSize={ tempCartProduct.size }
                 sizes={ product.sizes }
