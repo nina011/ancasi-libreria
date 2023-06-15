@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react'
 import NextLink from 'next/link';
-import { Box, Card, CardActionArea, CardMedia, Grid, Typography, Link } from '@mui/material'
+import { Box, Card, CardActionArea, CardMedia, Grid, Typography, Link, Chip } from '@mui/material'
 import { IProduct } from '../../interfaces'
 
 interface Props {
@@ -36,8 +36,23 @@ export const ProductCard: FC<Props> = ({ product }) => {
                     prefetch={ false }
                     legacyBehavior
                     >
-                    <Link>
+                    <Link>                    
                         <CardActionArea>
+                        {
+                            product.inStock === 0 &&(
+                                <Chip 
+                                    color='primary'
+                                    label='No hay disponibles'
+                                    sx={{ 
+                                        position: 'absolute',
+                                        zIndex: 98,
+                                        top:'10px',
+                                        left: '10px'
+                                    }}
+                                />
+                            )
+                        }
+                        
                             <CardMedia
                                 key={product._id}
                                 component={'img'}

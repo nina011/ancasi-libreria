@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { ShopLayout } from '../../components/layouts'
 import { initialData } from '../../database/products'
 import { Box, Button, Chip, Grid, Typography } from '@mui/material'
@@ -7,7 +7,7 @@ import SizeSelector from '../../components/products/SizeSelector'
 import { useRouter } from 'next/router'
 import { useProducts } from '../../hooks'
 import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
-import { IProduct } from '../../interfaces'
+import { ICartProduct, IProduct, ISize } from '../../interfaces'
 import { NextServer } from 'next/dist/server/next'
 import { dbProducts } from '../../database'
 
@@ -17,16 +17,25 @@ interface Props{
   product: IProduct
 }
 
-
-
 const ProductPage:NextPage<Props> = ({ product }) => {
 
-  // const router = useRouter()
-  // const { products: product, isLoading } = useProducts(`product/${router.query.slug}`)
-  // if(isLoading){
-  //   return <h1>Cargando...</h1>
-  // }
+  const [ tempCartProduct, setTempCartProduct ] = useState<ICartProduct>({
+    _id: product._id,
+    image: product.images[0],
+    price: product.price,
+    size: undefined,
+    slug: product.slug,
+    title: product.title,
+    gender: product.gender,
+    quantity: 1
+  })
 
+  const onSelectedSize = (size: ISize) => {
+    setTempCartProduct(currentProduct => ({
+      ...currentProduct,
+      size: size
+    }))
+  }
 
   return (
     <ShopLayout
@@ -76,8 +85,9 @@ const ProductPage:NextPage<Props> = ({ product }) => {
             >
               {/* <ItemCounter />  */}
               <SizeSelector 
-                // selectedSize={ product.sizes[0] }
+                selectedSize={ tempCartProduct.size }
                 sizes={ product.sizes }
+                onSelectedSize={(size) => onSelectedSize(size)}
               />
               <Typography
                 variant='subtitle2'
@@ -91,7 +101,11 @@ const ProductPage:NextPage<Props> = ({ product }) => {
               color='secondary'
               className='circular-btn'
             >
-              Agregar al carrito
+              {
+                tempCartProduct.size
+                ? 'Agregar al carritWo'
+                : 'Selecione una talla'
+              }
             </Button>
 
             <Chip
