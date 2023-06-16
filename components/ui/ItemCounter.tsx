@@ -27,8 +27,6 @@ export const ItemCounter: FC<Props> = ({
     updatedQuantity(currentValue  + 1)
   }
 
-  
-
   return (
     <Box
       display={'flex'}

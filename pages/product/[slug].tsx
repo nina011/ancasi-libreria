@@ -1,16 +1,22 @@
-import React, { FC, useState } from 'react'
-import { ShopLayout } from '../../components/layouts'
-import { initialData } from '../../database/products'
+import React, { FC, useContext, useState } from 'react'
+import { useRouter } from 'next/router'
+import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+// import { initialData } from '../../database/products'
+// import { NextServer } from 'next/dist/server/next'
+
+import { CartContext } from '../../context'
+
 import { Box, Button, Chip, Grid, Typography } from '@mui/material'
+import { ItemCounter } from '../../components/ui'
+
+import { ShopLayout } from '../../components/layouts'
 import { ProductSlideShow } from '../../components/products'
 import SizeSelector from '../../components/products/SizeSelector'
-import { useRouter } from 'next/router'
-import { useProducts } from '../../hooks'
-import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
-import { ICartProduct, IProduct, ISize } from '../../interfaces'
-import { NextServer } from 'next/dist/server/next'
+
+// import { useProducts } from '../../hooks'
 import { dbProducts } from '../../database'
-import { ItemCounter } from '../../components/ui'
+import { ICartProduct, IProduct, ISize } from '../../interfaces'
+
 
 // const product = initialData.products[0]
 
@@ -19,6 +25,9 @@ interface Props{
 }
 
 const ProductPage:NextPage<Props> = ({ product }) => {
+
+  const router = useRouter()
+  const { addProductToCart } = useContext(CartContext)
 
   const [ tempCartProduct, setTempCartProduct ] = useState<ICartProduct>({
     _id: product._id,
@@ -43,6 +52,16 @@ const ProductPage:NextPage<Props> = ({ product }) => {
       ...currentProduct,
       quantity: newQuantity
     }))
+  }
+
+  const onAddProduct = () => {
+    if(!tempCartProduct.size){
+      return
+    }
+
+    //TODO: llamar la accion del context para agregar al carrito
+    addProductToCart(tempCartProduct)
+    // router.push('/cart')
   }
 
   return (
@@ -113,10 +132,11 @@ const ProductPage:NextPage<Props> = ({ product }) => {
             <Button
               color='secondary'
               className='circular-btn'
+              onClick={onAddProduct}
             >
               {
                 tempCartProduct.size
-                ? 'Agregar al carritWo'
+                ? 'Agregar al carritoOO'
                 : 'Selecione una talla'
               }
             </Button>

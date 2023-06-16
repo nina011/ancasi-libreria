@@ -11,7 +11,6 @@ interface Props {
 }
 
 const SizeSelector:FC<Props> = ({ selectedSize, sizes, onSelectedSize }) => {
-console.log('sizes ', sizes, 'selectedSize ', selectedSize)
 return (
     <Box>
         {
