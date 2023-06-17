@@ -23,6 +23,7 @@
     "swr": "^2.1.5"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "eslint": "8.41.0",

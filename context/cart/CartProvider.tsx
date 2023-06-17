@@ -1,4 +1,6 @@
-import { FC, useReducer } from 'react'
+import { FC, useEffect, useReducer } from 'react'
+import Cookie from 'js-cookie'
+
 import { CartContext, cartReducer } from './' 
 import { ICartProduct } from '../../interfaces'
 import { APP_PATHS_MANIFEST } from 'next/dist/shared/lib/constants'
@@ -18,6 +20,10 @@ interface Props{
 export const CartProvider:FC<Props> = ({ children }) => {
     const [ state, dispatch ] = useReducer(cartReducer, CART_INITIAL_STATE)
 
+    useEffect(() =>{
+        Cookie.set('cart', JSON.stringify(state.cart))
+    } , [state.cart])
+    
     const addProductToCart = (product: ICartProduct) => {
         console.log('comunicandose con funcion addproduct de cartProvider')
    
