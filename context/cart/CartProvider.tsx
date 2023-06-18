@@ -23,7 +23,22 @@ export const CartProvider:FC<Props> = ({ children }) => {
     useEffect(() =>{
         Cookie.set('cart', JSON.stringify(state.cart))
     } , [state.cart])
-    
+
+    useEffect(() => {
+        try{
+            const cookieProducts = Cookie.get('cart') ? JSON.parse( Cookie.get('cart')!): [] 
+            dispatch({
+                type: '[Cart] - LoadCart from cookies | storage',
+                payload: cookieProducts
+            })
+        }catch(e){
+            dispatch({
+                type: '[Cart] - LoadCart from cookies | storage',
+                payload: []
+            })
+        }
+    }, [])
+
     const addProductToCart = (product: ICartProduct) => {
         console.log('comunicandose con funcion addproduct de cartProvider')
    
