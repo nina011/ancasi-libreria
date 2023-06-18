@@ -39,7 +39,13 @@ export const cartReducer = (state: CartState, action: CartActionType ): CartStat
             return {
                 ...state,
             cart: state.cart.filter(prod => !(prod._id === action.payload._id && prod.size === action.payload.size))
-            }
+                // cart: state.cart.filter( product => {
+                //     if( product._id === action.payload._id && product.size === action.payload.size){
+                //         return false
+                //     }
+                //     return true
+                // })
+        }
         default:
             return state;
     }
