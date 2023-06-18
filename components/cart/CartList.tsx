@@ -1,24 +1,27 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import NextLink from 'next/link'
 import { initialData } from '../../database/products'
 import { Box, Button, CardActionArea, CardMedia, Grid, Link, Typography } from '@mui/material'
 import { ItemCounter } from '../ui';
+import { CartContext } from '../../context';
 
-const productsInCart = [
-    initialData.products[0],
-    initialData.products[1],
-    initialData.products[2]
-]
+// const productsInCart = [
+//     initialData.products[0],
+//     initialData.products[1],
+//     initialData.products[2]
+// ]
 
 interface Props{
     editable?: boolean;
 }
 export const CartList: FC<Props> = ({ editable = false }) => {
+
+    const { cart } = useContext(CartContext)
   
   return (
     <>
     {
-        productsInCart.map( prod => (
+        cart.map( prod => (
             <Grid
                 key={ prod.slug }
                 container
@@ -35,7 +38,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                         <Link>
                             <CardActionArea>
                                 <CardMedia 
-                                    image={`products/${ prod.images[0]}`}
+                                    image={`products/${ prod.image}`}
                                     component={'img'}
                                     sx={{ borderRadius: '5px' }}
                                 />
@@ -53,8 +56,17 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                     
                     {
                         editable 
-                        ? <ItemCounter />
-                        : <Typography variant='h4'>3 items</Typography>
+                        ? <ItemCounter 
+                            currentValue={ prod.quantity }
+                            maxValue={ 10 } 
+                            updatedQuantity={() => {} }
+                             />
+                        : (
+                            <Typography variant='h4'>
+                                {prod.quantity} 
+                                { prod.quantity > 1 ? 'productos' : 'producto'}
+                            </Typography>
+                          )
                     }
                     </Box>
                 </Grid>
