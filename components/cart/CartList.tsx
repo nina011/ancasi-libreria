@@ -4,6 +4,7 @@ import { initialData } from '../../database/products'
 import { Box, Button, CardActionArea, CardMedia, Grid, Link, Typography } from '@mui/material'
 import { ItemCounter } from '../ui';
 import { CartContext } from '../../context';
+import { ICartProduct } from '../../interfaces';
 
 // const productsInCart = [
 //     initialData.products[0],
@@ -16,8 +17,17 @@ interface Props{
 }
 export const CartList: FC<Props> = ({ editable = false }) => {
 
-    const { cart } = useContext(CartContext)
+    const { cart, updateCartQuantity, removeCartProduct } = useContext(CartContext)
+
+    const onNewCartQuantityValue = (product: ICartProduct, newQuantityValue: number) => {
+        product.quantity = newQuantityValue;
+        updateCartQuantity(product)
+    }
   
+    const removeProductOfList = (product: ICartProduct) => {
+        if(!product) return;
+        removeCartProduct(product)
+    }
   return (
     <>
     {
@@ -52,14 +62,14 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                         flexDirection='column'
                     >
                         <Typography variant='body1'>{ prod.title}</Typography>
-                        <Typography variant='body2'>Talla: <strong>M</strong></Typography>
+                        <Typography variant='body2'>Talla: <strong>{ prod.size }</strong></Typography>
                     
                     {
                         editable 
                         ? <ItemCounter 
                             currentValue={ prod.quantity }
                             maxValue={ 10 } 
-                            updatedQuantity={() => {} }
+                            updatedQuantity={(newValue) => onNewCartQuantityValue(prod, newValue) }
                              />
                         : (
                             <Typography variant='h4'>
@@ -86,6 +96,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                             <Button
                                 variant='text'
                                 color='secondary'
+                                onClick={() => removeProductOfList(prod)}
                             >
                                 Remover
                             </Button>
