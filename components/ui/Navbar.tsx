@@ -5,7 +5,6 @@ import { ClearOutlined, SearchOffOutlined, SearchOutlined, ShoppingCartOutlined 
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
 import { CartContext, UIContext } from '../../context'
-import { trusted } from 'mongoose'
 
 export const Navbar = () => {
 
@@ -18,7 +17,6 @@ export const Navbar = () => {
 
     const onSearchTerm = () => {
         if (searchTerm.trim().length === 0) return;
-
         navigateTo(`/search/${searchTerm}`)
     }
 
@@ -36,8 +34,6 @@ export const Navbar = () => {
                         <Typography sx={{ ml: 0.5 }}>Shop</Typography>
                     </Link>
                 </NextLink>
-
-
 
                 {/* TODO FLEX */}
                 <Box flex={1} />
@@ -126,8 +122,7 @@ export const Navbar = () => {
                             </IconButton>
                         )
                 }
-
-
+                
                 {/* TODO FLEX */}
 
                 <NextLink href={'/cart'} passHref legacyBehavior>
