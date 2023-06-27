@@ -5,7 +5,9 @@ import { useForm } from 'react-hook-form'
 import { validations } from '../../utils'
 import { tesloApi } from '../../api'
 import { ErrorOutline } from '@mui/icons-material'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../../context'
+import { useRouter } from 'next/router'
 // import axios from 'axios'
 
 type FormData = {
@@ -14,25 +16,41 @@ type FormData = {
 }
 
 const LoginPage = () => {
+
+  const router = useRouter()
+
+  const { loginUser } = useContext( AuthContext )
+
   const { register, handleSubmit, formState: { errors }} = useForm<FormData>()
   const [ showError, setShowError ] = useState(false)
- 
+    
   const onLoginUser = async(data: FormData) => {
+
+    setShowError(false)
+
     const { email, password } = data;
+    const isValidLogin = await loginUser( email, password )
 
-    try{
-        const { data } = await tesloApi.post('/user/login',{ email, password });
-        const { token, user } = data;
-        console.log({ token, user })
-
-    }catch(err){
-        // if(axios.isAxiosError(error)){
-        //     error
-        // }
-        console.log('error en las credenciales')
+    if(!isValidLogin){
         setShowError(true)
-        // setTimeout(() => { setShowError(false),10000 })
+        return;
     }
+
+    router.replace('/')
+
+    // try{ version primer login
+    //     const { data } = await tesloApi.post('/user/login',{ email, password });
+    //     const { token, user } = data;
+    //     console.log({ token, user })
+
+    // }catch(err){
+    //     // if(axios.isAxiosError(error)){
+    //     //     error
+    //     // }
+    //     console.log('error en las credenciales')
+    //     setShowError(true)
+    //     // setTimeout(() => { setShowError(false),10000 })
+    // }
   }
   
   
