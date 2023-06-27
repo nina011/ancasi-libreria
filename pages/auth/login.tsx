@@ -2,6 +2,7 @@ import NextLink from 'next/link'
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { AuthLayout } from "../../components/layouts"
 import { useForm } from 'react-hook-form'
+import { validations } from '../../utils'
 
 type FormData = {
     email   : string;
@@ -10,7 +11,7 @@ type FormData = {
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }} = useForm<FormData>()
-  
+
   const onLoginUser = (data: FormData) => {
     console.log({ data })
   }
@@ -34,10 +35,16 @@ const LoginPage = () => {
 
                 <Grid item xs={12}>
                     <TextField 
+                        type='email'
                         label='correo' 
                         variant='filled' 
                         fullWidth
-                        { ...register('email') }
+                        { ...register('email',{
+                            required: 'Este capo es requerido',
+                            validate: (value) => validations.isEmail(value)
+                        })}
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
                     />
                 </Grid>
 
@@ -47,7 +54,12 @@ const LoginPage = () => {
                         type="password" 
                         variant='filled' 
                         fullWidth
-                        {...register('password')}
+                        {...register('password',{
+                            required: 'Este campo es requerido',
+                            minLength: { value: 6, message: 'Mínimo 6 caracteres'}
+                        })}
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
                     />
                 </Grid>
 
