@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import NextLink from 'next/link';
 
 import { Box, Button, Chip, Grid, Link, TextField, Typography } from "@mui/material"
@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form'
 import { tesloApi } from '../../api';
 import { AuthLayout } from "../../components/layouts"
 import { validations } from '../../utils';
+import { useRouter } from 'next/router';
+import { AuthContext } from '../../context';
 
 type FormData = {
     name    : string;
@@ -17,25 +19,39 @@ type FormData = {
 
 const RegiterPage = () => {
 
+    const router = useRouter()
+
+    const { registerUser } = useContext(AuthContext)
+
     const { register, handleSubmit, formState: { errors }} = useForm<FormData>()
     const [ showError, setShowError ] = useState(false)
 
     const onRegisterForm = async(data: FormData) => {
+        setShowError(false)
         const { email, password, name } = data;
+        const { hasError, message } = await registerUser(name, email, password)
 
-    try{
-        const { data } = await tesloApi.post('/user/register',{ name, email, password });
-        const { token, user } = data;
-        console.log({ token, user })
+        if(hasError){
+            setShowError(true)
+            return;
+        }
 
-    }catch(err){
-        // if(axios.isAxiosError(error)){
-        //     error
-        // }
-        console.log('error en las credenciales')
-        setShowError(true)
-        // setTimeout(() => { setShowError(false),10000 })
-    }
+    router.replace('/')
+
+    // try{ codigo viejo
+
+    //     const { data } = await tesloApi.post('/user/register',{ name, email, password });
+    //     const { token, user } = data;
+    //     console.log({ token, user })
+
+    // }catch(err){
+    //     // if(axios.isAxiosError(error)){
+    //     //     error
+    //     // }
+    //     console.log('error en las credenciales')
+    //     setShowError(true)
+    //     // setTimeout(() => { setShowError(false),10000 })
+    // }
 
     }
 
