@@ -6,6 +6,7 @@ import { ICartProduct } from '../../interfaces'
 import { APP_PATHS_MANIFEST } from 'next/dist/shared/lib/constants'
 
 export interface CartState{
+    isLoaded: boolean,
     cart: ICartProduct[],
     numberOfItems: number,
     subTotal: number, 
@@ -14,6 +15,7 @@ export interface CartState{
 }
 
 const CART_INITIAL_STATE: CartState = {
+    isLoaded: false,
     cart:[],
     numberOfItems: 0,
     subTotal: 0,

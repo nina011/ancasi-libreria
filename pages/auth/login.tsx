@@ -36,7 +36,8 @@ const LoginPage = () => {
         return;
     }
 
-    router.replace('/')
+    const destination = router.query.p?.toString() || '/';
+    router.replace(destination)
 
     // try{ version primer login
     //     const { data } = await tesloApi.post('/user/login',{ email, password });
@@ -120,7 +121,7 @@ const LoginPage = () => {
                 </Grid>
 
                 <Grid item xs={12} display='flex' justifyContent={'end'} >
-                    <NextLink href={'/auth/register'} passHref legacyBehavior>
+                    <NextLink href={router.query.p ? `/auth/register?p=${router.query.p}` : '/auth/register'} passHref legacyBehavior>
                         <Link underline='always'>
                             ¿No tienes cuenta?
                         </Link>
