@@ -1,11 +1,28 @@
 import React, { FC } from 'react'
 import { ShopLayout } from '../../components/layouts'
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
-import { NextServer } from 'next/dist/server/next'
-import { GetServerSideProps } from 'next'
-import { jwt } from '../../utils'
+// import { NextServer } from 'next/dist/server/next'
+// import { GetServerSideProps } from 'next'
+// import { jwt } from '../../utils'
+import { countries } from '../../utils'
+import { SubresourceIntegrityAlgorithm } from 'next/dist/build/webpack/plugins/subresource-integrity-plugin'
+
+type formData = {
+    firstName: string;
+    lastName : string;
+    address  : string;
+    address2?: string;
+    zip      : string;
+    city     : string;
+    country  : string;
+    phone    : string;
+}
 
 const AddressPage: FC = () => {
+
+
+
+
   return (
     <ShopLayout
         title='Dirección'
@@ -104,10 +121,20 @@ const AddressPage: FC = () => {
                         label='País'
                         value={1}
                     >
-                        <MenuItem value={1}>Chile</MenuItem>
+                        {
+                            countries.countries.map(country => (
+                                <MenuItem   
+                                    key={ country.code }
+                                    value={ country.code }
+                                >
+                                    { country.name }
+                                </MenuItem>
+                            ))
+                        }
+                        {/* <MenuItem value={1}>Chile</MenuItem>
                         <MenuItem value={2}>Honduras</MenuItem>
                         <MenuItem value={3}>El Salvador</MenuItem>
-                        <MenuItem value={4}>México</MenuItem>
+                        <MenuItem value={4}>México</MenuItem> */}
                     </Select>
                 </FormControl>
             </Grid>
@@ -141,34 +168,34 @@ const AddressPage: FC = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async(ctx) => {
+// export const getServerSideProps: GetServerSideProps = async(ctx) => {
     
-    const { req } = ctx;
-    const { token = '' } = req.cookies;
+//     const { req } = ctx;
+//     const { token = '' } = req.cookies;
 
-    let isValidToken = false;
+//     let isValidToken = false;
 
-    try{    
-        await jwt.isValidToken( token )
-        isValidToken = true;
+//     try{    
+//         await jwt.isValidToken( token )
+//         isValidToken = true;
 
-    }catch(err){
-        isValidToken = false;
-    }
+//     }catch(err){
+//         isValidToken = false;
+//     }
 
-    if( !isValidToken ){
-        return {
-            redirect: {
-                destination: '/auth/login?p=/checkout/address',
-                permanent: false
-            }
-        }
-    }
+//     if( !isValidToken ){
+//         return {
+//             redirect: {
+//                 destination: '/auth/login?p=/checkout/address',
+//                 permanent: false
+//             }
+//         }
+//     }
 
-    return{
-        props:{
+//     return{
+//         props:{
             
-        }
-    }
-}
+//         }
+//     }
+// }
 export default AddressPage
