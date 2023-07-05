@@ -8,6 +8,7 @@ interface SeedBook {
     slug: string;
     tags: string[];
     title: string;
+    author: string;
     gender: 
     'drama' 
     |'ficción'
@@ -66,330 +67,348 @@ export const initialData: SeedData = {
             tags: ['sweatshirt'],
             title: "1984",
             gender: 'ficción',
-            // author: 'George Orwell'
+            author: 'George Orwell'
         },
         {
-            description: "The Men's Quilted Shirt Jacket features a uniquely fit, quilted design for warmth and mobility in cold weather seasons. With an overall street-smart aesthetic, the jacket features subtle silicone injected Tesla logos below the back collar and on the right sleeve, as well as custom matte metal zipper pulls. Made from 87% nylon and 13% polyurethane.",
-            image: '1740507-00-A_0_2000.jpg',
+            description: "El libro que todo novato en linux debería leer",
+            image: 'aprender-linux.jpg',
             inStock: 5,
-            price: 200,
+            price: 10000,
             slug: "men_quilted_shirt_jacket",
             tags: ['jacket'],
-            title: "Men's Quilted Shirt Jacket",
-            gender: 'ficción'
+            title: "Aprender Linux, linux para principiantes",
+            gender: 'informática',
+            author:'Andy Vickler'
         },
-
         {
-            description: "Introducing the Tesla Raven Collection. The Men's Raven Lightweight Zip Up Bomber has a premium, modern silhouette made from a sustainable bamboo cotton blend for versatility in any season. The hoodie features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, a concealed chest pocket with custom matte zipper pulls and a french terry interior. Made from 70% bamboo and 30% cotton.",
-            image: '1740250-00-A_0_2000.jpg',
+            description: "Para poder crecer como persona hay que ser, ante todo, libre interiormente; es decir, pensar, sentir y actuar según los propios valores y principios, asumir que sobre ti solo tú decides y mandas. En la era de los likes, sin embargo, cada vez es más frecuente vivir pendientes de la aprobación ajena y con miedo a mostrarnos tal cual somos."+
+                        "Este libro es una guía para que trabajes activamente en el desarrollo de tu libre personalidad, sin sentirte intimidado y respetando los derechos ajenos. Se trata de sacar toda la información basura que te han inculcado desde la infancia para desarrollar el verdadero potencial que posees." +
+                        "Si a veces te sientes desesperanzado porque no encuentras tu lugar en esta vida, no te preocupes, con este libro descubrirás que tu lugar en el mundo está en ti. No necesitas que nadie te cuelgue medallas ni que te elogien desaforadamente, sino solo estar bien contigo mismo. Nada más y nada menos.",
+            image: 'atrevete-a-ser.jpg',
             inStock: 10,
-            price: 130,
+            price: 7000,
             slug: "men_raven_lightweight_zip_up_bomber_jacket",
             tags: ['shirt'],
-            title: "Men's Raven Lightweight Zip Up Bomber Jacket",
-            gender: 'ficción'
+            title: "Atrévete a ser quien eres (aunque no gustes)",
+            gender: 'autoayuda',
+            author: 'Walter Riso'
         },
 
         {
-            description: "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Men's Turbine Long Sleeve Tee features a subtle, water-based T logo on the left chest and our Tesla wordmark below the back collar. The lightweight material is double-dyed, creating a soft, casual style for ideal wear in any season. Made from 50% cotton and 50% polyester.",
-            image: '1740280-00-A_0_2000.jpg',
+            description: "This practical, tutorial-style book uses the Kali Linux distribution to teach Linux basics with a focus on how hackers would use them. Topics include Linux command line basics, filesystems, networking, BASH basics, package management, logging, and the Linux kernel and drivers.",
+            image: 'linux-for-hackers.jpg',
             inStock: 50,
             price: 45,
             slug: "men_turbine_long_sleeve_tee",
             tags: ['shirt'],
-            title: "Men's Turbine Long Sleeve Tee",
-            gender: 'ficción'
+            title: "Linux Basics for Hackers",
+            gender: 'informática',
+            author: 'OccupyTheWeb'
         },
         {
-            description: "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Men's Turbine Short Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style for ideal wear in any season. Made from 50% cotton and 50% polyester.",
-            image:'1741416-00-A_0_2000.jpg',
+            description: "You've experienced the shiny, point-and-click surface of your Linux computer—now dive below and explore its depths with the power of the command line. The Linux Command Line takes you from your very first terminal keystrokes to writing full programs in Bash, the most popular Linux shell. Along the way you'll learn the timeless skills handed down by generations of gray-bearded, mouse-shunning gurus: file navigation, environment configuration, command chaining, pattern matching with regular expressions, and more.",
+            image:'command-line.jpg',
             inStock: 50,
-            price: 40,
+            price: 8000,
             slug: "men_turbine_short_sleeve_tee",
             tags: ['shirt'],
-            title: "Men's Turbine Short Sleeve Tee",
-            gender: 'ficción'
+            title: "The Linux Command Line: A Complete Introduction",
+            gender: 'informática',
+            author: 'William E. Shotts, Jr.'
         },
         {
-            description: "Designed for comfort, the Cybertruck Owl Tee is made from 100% cotton and features our signature Cybertruck icon on the back.",
-            image:'7654393-00-A_2_2000.jpg',
+            description: "Crimen y castigo - Detalle de la obra - Enciclopedia de la ..."+
+            "Crimen y castigo explora zonas oscuras de la psique humana, y logra conmover al lector porque los temas que aborda (la injusticia social, la necesidad extrema, el problema de decidir entre el bien o el mal, las adicciones que enturbian la mente de los individuos, etc.) no le son ajenos.",
+            image:'crimen-y-castigo.jpg',
             inStock: 0,
             price: 35,
             slug: "men_cybertruck_owl_tee",
             tags: ['shirt'],
-            title: "Men's Cybertruck Owl Tee",
-            gender: 'ficción'
+            title: "Crimen y castigo",
+            gender: 'novela',
+            author: 'Fiódor Dostoyevski'
         },
         {
-            description: "Inspired by our fully integrated home solar and storage system, the Tesla Solar Roof Tee advocates for clean, sustainable energy wherever you go. Designed for fit, comfort and style, the tee features an aerial view of our seamless Solar Roof design on the front with our signature T logo above 'Solar Roof' on the back. Made from 100% Peruvian cotton.",
-            image: '1703767-00-A_0_2000.jpg',
+            description: "La obra trata la historia de Fausto, doctor en teología, que en su búsqueda del conocimiento decide vender su alma al Diablo para conseguir los favores de uno de sus siervos, el demonio Mefistófeles. Consta de un prólogo, trece escenas y un epílogo.",
+            image: 'fausto.jpg',
             inStock: 15,
-            price: 35,
+            price: 8000,
             slug: "men_solar_roof_tee",
             tags: ['shirt'],
-            title: "Men's Solar Roof Tee",
-            gender: 'ficción'
+            title: "Fausto",
+            gender: 'ficción',
+            author: 'Johann Wolfgang Von Goethe'
         },
         {
-            description: "Inspired by the world’s most unlimited resource, the Let the Sun Shine Tee highlights our fully integrated home solar and storage system. Designed for fit, comfort and style, the tee features a sunset graphic along with our Tesla wordmark on the front and our signature T logo printed above 'Solar Roof' on the back. Made from 100% Peruvian cotton.",
-            image: '1700280-00-A_0_2000.jpg',
+            description: "Hamlet es una tragedia de venganza. El espíritu de su padre le pide al joven príncipe de Dinamarca que vengue el asesinato que su propio hermano perpetró contra él. Sin embargo, en la obra de Shakespeare, no destaca la realización de la venganza, sino que el conflicto interno del héroe tiene prioridad.",
+            image: 'hamlet.jpg',
             inStock: 17,
-            price: 35,
+            price: 6000,
             slug: "men_let_the_sun_shine_tee",
             tags: ['shirt'],
-            title: "Men's Let the Sun Shine Tee",
-            gender: 'ficción'
+            title: "Hamlet",
+            gender: 'drama',
+            author: 'Shakespeare'
         },
         {
-            description: "Designed for fit, comfort and style, the Men's 3D Large Wordmark Tee is made from 100% Peruvian cotton with a 3D silicone-printed Tesla wordmark printed across the chest.",
-            image: '8764734-00-A_0_2000.jpg',
+            description: "Situada entre 1805 y 1813, en la Rusia convulsionada por la amenaza napoleónica, el presente libro es una de las cumbres indiscutidas de la literatura universal. ",
+            image: 'guerra-y-paz.jpg',
             inStock: 12,
-            price: 35,
+            price: 12000,
             slug: "men_3d_large_wordmark_tee",
             tags: ['shirt'],
-            title: "Men's 3D Large Wordmark Tee",
-            gender: 'ficción'
+            title: "Guerra y Paz",
+            gender: 'ficción',
+            author: 'Lev Tolstòi'
         },
         {
-            description: "Designed for fit, comfort and style, the Tesla T Logo Tee is made from 100% Peruvian cotton and features a silicone-printed T Logo on the left chest.",
-            image: '7652426-00-A_0_2000.jpg',
+            description: "La vida de la robotpsicóloga Susan Calvin acompaña los avances de la industria robótica desde sus primeros intentos -los rudimentarios robots áfonos y los autómatas obreros- hasta sus logros más sofisticados: las máquinas que auxilian al hombre en el gobierno planetario.",
+            image: 'yo-robot.jpg',
             inStock: 5,
-            price: 35,
+            price: 15000,
             slug: "men_3d_t_logo_tee",
             tags: ['shirt'],
-            title: "Men's 3D T Logo Tee",
-            gender: 'terror'
+            title: "Yo, Robot",
+            gender: 'ficción',
+            author: 'Isaac Asimov'
         },
         {
-            description: "Designed for comfort and style in any size, the Tesla Small Wordmark Tee is made from 100% Peruvian cotton and features a 3D silicone-printed wordmark on the left chest.",
-            image:'8528839-00-A_0_2000.jpg',
+            description: "La metamorfosis es una novela de Franz Kafka, publicada en 1915. Cuenta la historia de la transformación de Gregorio Samsa en un monstruoso insecto, y del drama familiar que se desata a raíz de este acontecimiento.",
+            image:'metamorfosis.jpg',
             inStock: 2,
-            price: 35,
+            price: 6500,
             slug: "men_3d_small_wordmark_tee",
             tags: ['shirt'],
-            title: "Men’s 3D Small Wordmark Tee",
-            gender: 'romance'
+            title: "La metamorfosis",
+            gender: 'drama',
+            author: 'Franz Kafka'
         },
         {
-            description: "Designed to celebrate Tesla's incredible performance mode, the Plaid Mode Tee features great fit, comfort and style. Made from 100% cotton, it's the next best thing to riding shotgun at the Nürburgring.",
-            image:'1549268-00-A_0_2000.jpg',
+            description: "La adversidad es una situación compleja y estresante que pone a prueba nuestra capacidad de adaptación. El sufrimiento que provoca, si lo sabemos procesar, nos enseña a ser resistentes ante los embates de la vida..",
+            image:'mas-fuerte.jpg',
             inStock: 82,
-            price: 35,
+            price: 11000,
             slug: "men_plaid_mode_tee",
             tags: ['shirt'],
-            title: "Men's Plaid Mode Tee",
-            gender: 'terror'
+            title: "Más fuerte que la adversidad",
+            gender: 'autoayuda',
+            author: 'Walter Riso'
         },
         {
-            description: "Inspired by our popular home battery, the Tesla Powerwall Tee is made from 100% cotton and features the phrase 'Pure Energy' under our signature logo in the back. Designed for fit, comfort and style, the exclusive tee promotes sustainable energy in any environment.",
-            image: '9877034-00-A_0_2000.jpg',
+            description: "La historia del nadsat-adolescente Alex y sus tres drugos-amigos en un mundo de crueldad y destrucción. Alex tiene, según Burgess, los principales atributos humanos; amor a la agresión, amor al lenguaje, amor a la belleza. Pero es joven y no ha entendido aún la verdadera importancia de la libertad, la que disfruta de un modo tan violento. En cierto sentido vive en el Edén, y sólo cuando cae (como en verdad le ocurre, desde una ventana) parece capaz de llegar a transformase en un verdadero ser humano.",
+            image: 'naranjamecanica.jpg',
             inStock: 24,
-            price: 35,
+            price: 15000,
             slug: "men_powerwall_tee",
             tags: ['shirt'],
-            title: "Men's Powerwall Tee",
-            gender: 'científico'
+            title: "La Naranja Mecánica",
+            gender: 'drama',
+            author: 'Anthony Burgess'
         },
         {
-            description: "Inspired by Tesla Battery Day and featuring the unveiled tabless battery cell, Battery Day Tee celebrates the future of energy storage and cell manufacturing. Designed for fit, comfort and style, Battery Day Tee is made from 100% cotton with a stylized cell printed across the chest. Made in Peru.",
-            image:'1633802-00-A_0_2000.jpg',
+            description: "Orgullo y prejuicio narra las aventuras y desventuras amorosas de las hermanas Bennet, centrándose en el personaje de Elizabeth, a través de las cuales la autora nos presenta con comicidad la sociedad de su tiempo y coloca a la mujer en un lugar más notorio que el que le correspondía en su época con la figura de la",
+            image:'orgullo-prejuicio.jpg',
             inStock: 5,
             price: 30,
             slug: "men_battery_day_tee",
             tags: ['shirt'],
-            title: "Men's Battery Day Tee",
-            gender: 'ficción'
+            title: "Orgullo y prejuicio",
+            gender: 'drama',
+            author: 'Jane Austen'
         },
         {
-            description: "Designed for exceptional comfort and inspired by the Cybertruck unveil event, the Cybertruck Bulletproof Tee is made from 100% cotton and features our signature Cybertruck icon on the back.",
-            image: '7654399-00-A_0_2000.jpg',
-            inStock: 150,
+            description: "Fue considerada por Aristóteles en su obra Poética como la más perfecta de las tragedias griegas. Edipo rey es un drama de revelación que propone la búsqueda de lo que se esconde tras las apariencias, la indagación en la esencia de lo que uno es y la constante lucha del individuo contra el destino.",
+            image: 'edipo-rey.jpg',
+            inStock: 5000,
             price: 30,
             slug: "men_cybertruck_bulletproof_tee",
             tags: ['shirt'],
-            title: "Men’s Cybertruck Bulletproof Tee",
-            gender: 'terror'
+            title: "Edipo Rey",
+            gender: 'novela',
+            author: 'Sófocles'
         },
         {
-            description: "Inspired by the Model Y order confirmation graphic, the limited edition Haha Yes Tee is designed for comfort and style. Made from 100% Peruvian cotton and featuring the Tesla wordmark across the chest, the exclusive tee will commemorate your order for years to come.",
-            image: '7652410-00-A_0.jpg',
-            inStock: 10,
+            description: "En esta obra, como en ninguna otra, Robert Louis Stevenson (1850-1894) expresa la intención de adentrarse en las zonas más oscuras de la naturaleza humana. En ellas va colocando una serie de elementos contradictorios, diabólicos, desconocidos. Nada es transparente porque en el interior del hombre están instaladas las tinieblas a las que apenas se puede acceder a través de una neblina débilmente iluminada. La identidad misma es un misterio tan oscuro como las noches en las que Jekyll se transforma en Mr, Hyde. Libro publicado en 1886, R. L. Stevenson presenta, como nunca se ha hecho, la dualidad del alma humana escindida entre el bien y el mal.",
+            image: 'drjeckyl.jpg',
+            inStock: 8000,
             price: 35,
             slug: "men_haha_yes_tee",
             tags: ['shirt'],
-            title: "Men's Haha Yes Tee",
-            gender: 'informática'
+            title: "El Dr. Jekyll y Mr. Hyde",
+            gender: 'ficción',
+            author:'Robert Louis Stevenson'
         },
         {
-            description: "Designed for fit, comfort and style, the limited edition S3XY Tee is made from 100% cotton with a 3D silicone-printed “S3XY” logo across the chest. Made in Peru. Available in black.",
-            image:'8764600-00-A_0_2000.jpg',
+            description: "La novela, escrita de forma epistolar a modo de diarios y con pequeños saltos en el tiempo narra la desmesurada ambición de poder de Drácula, un hombre solitario, cultivado, aristocrático y terriblemente terrorífico que vive aislado en un castillo decadente y que se traslada a Londres para conseguir sus fines.",
+            image:'dracula.jpg',
             inStock: 34,
-            price: 35,
+            price: 4000,
             slug: "men_s3xy_tee",
             tags: ['shirt'],
-            title: "Men's S3XY Tee",
-            gender: 'ficción'
+            title: "Drácula",
+            gender: 'terror',
+            author: 'Bram Stocker'
         },
-        {
-            description: "Designed for fit, comfort and style, the Men's 3D Wordmark Long Sleeve Tee is made from 100% cotton and features an understated wordmark logo on the left chest.",
-            image: '8764813-00-A_0_2000.jpg',
-            inStock: 15,
-            price: 40,
-            slug: "men_3d_wordmark_long_sleeve_tee",
-            tags: ['shirt'],
-            title: "Men's 3D Wordmark Long Sleeve Tee",
-            gender: 'terror'
-        },
-        {
-            description: "Designed for fit, comfort and style, the Men's 3D T Logo Long Sleeve Tee is made from 100% cotton and features an understated T logo on the left chest.",
-            image: '8529198-00-A_0_2000.jpg',
-            inStock: 12,
-            price: 40,
-            slug: "men_3d_t_logo_long_sleeve_tee",
-            tags: ['shirt'],
-            title: "Men's 3D T Logo Long Sleeve Tee",
-            gender: 'terror'
-        },
-        {
-            description: "Introducing the Tesla Raven Collection. The Men's Raven Lightweight Hoodie has a premium, relaxed silhouette made from a sustainable bamboo cotton blend. The hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve with a french terry interior for versatility in any season. Made from 70% bamboo and 30% cotton.",
-            image: '1740245-00-A_0_2000.jpg',
-            inStock: 10,
-            price: 115,
-            slug: "men_raven_lightweight_hoodie",
-            tags: ['hoodie'],
-            title: "Men's Raven Lightweight Hoodie",
-            gender: 'drama'
-        },
-        {
-            description: "Introducing the Tesla Chill Collection. The Chill Pullover Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The unisex hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
-            image: '1740051-00-A_0_2000.jpg',
-            inStock: 10,
-            price: 130,
-            slug: "chill_pullover_hoodie",
-            tags: ['hoodie'],
-            title: "Chill Pullover Hoodie",
-            gender: 'drama'
-        },
-        {
-            description: "Introducing the Tesla Chill Collection. The Men's Chill Full Zip Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The hoodie features subtle thermoplastic polyurethane Tesla logos on the left chest and sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
-            image: '1741111-00-A_0_2000.jpg',
-            inStock: 100,
-            price: 85,
-            slug: "men_chill_full_zip_hoodie",
-            tags: ['shirt'],
-            title: "Men's Chill Full Zip Hoodie",
-            gender: 'drama'
-        },
-        {
-            description: "Introducing the Tesla Chill Collection. The Men’s Chill Quarter Zip Pullover has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The pullover features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, as well as a custom matte zipper pull. Made from 60% cotton and 40% recycled polyester.",
-            image: '1740140-00-A_0_2000.jpg',
-            inStock: 7,
-            price: 85,
-            slug: "men_chill_quarter_zip_pullover_-_gray",
-            tags: ['shirt'],
-            title: "Men's Chill Quarter Zip Pullover - Gray",
-            gender: 'niños'
-        },
-        {
-            description: "Introducing the Tesla Chill Collection. The Men’s Chill Quarter Zip Pullover has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The pullover features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, as well as a custom matte zipper pull. Made from 60% cotton and 40% recycled polyester.",
-            image: '1740145-00-A_2_2000.jpg',
-            inStock: 15,
-            price: 85,
-            slug: "men_chill_quarter_zip_pullover_-_white",
-            tags: ['shirt'],
-            title: "Men's Chill Quarter Zip Pullover - White",
-            gender: 'drama'
-        },
-        {
-            description: "The Unisex 3D Large Wordmark Pullover Hoodie features soft fleece and an adjustable, jersey-lined hood for comfort and coverage. Designed in a unisex style, the pullover hoodie includes a tone-on-tone 3D silicone-printed wordmark across the chest.",
-            image:'8529107-00-A_0_2000.jpg',
-            inStock: 15,
-            price: 70,
-            slug: "3d_large_wordmark_pullover_hoodie",
-            tags: ['hoodie'],
-            title: "3D Large Wordmark Pullover Hoodie",
-            gender: 'drama'
-        },
-        {
-            description: "As with the iconic Tesla logo, the Cybertruck Graffiti Hoodie is a classic in the making. Unisex style featuring soft fleece and an adjustable, jersey-lined hood for comfortable coverage.",
-            image:'7654420-00-A_0_2000.jpg',
-            inStock: 13,
-            price: 60,
-            slug: "cybertruck_graffiti_hoodie",
-            tags: ['hoodie'],
-            title: "Cybertruck Graffiti Hoodie",
-            gender: 'científico'
-        },
-        {
-            description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
-            image: '1657932-00-A_0_2000.jpg',
-            inStock: 11,
-            price: 30,
-            slug: "relaxed_t_logo_hat",
-            tags: ['hats'],
-            title: "Relaxed T Logo Hat",
-            gender: 'terror'
-        },
-        {
-            description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
-            image:'1740417-00-A_0_2000.jpg',
-            inStock: 13,
-            price: 35,
-            slug: "thermal_cuffed_beanie",
-            tags: ['hats'],
-            title: "Thermal Cuffed Beanie",
-            gender: 'niños'
-        },
-        {
-            description: "The Women's Cropped Puffer Jacket features a uniquely cropped silhouette for the perfect, modern style while on the go during the cozy season ahead. The puffer features subtle silicone injected Tesla logos below the back collar and on the right sleeve, custom matte metal zipper pulls and a soft, fleece lined collar. Made from 87% nylon and 13% polyurethane.",
-            image:'1740535-00-A_0_2000.jpg',
-            inStock: 85,
-            price: 225,
-            slug: "women_cropped_puffer_jacket",
-            tags: ['hoodie'],
-            title: "Women's Cropped Puffer Jacket",
-            gender: 'informática'
-        },
-        {
-            description: "Introducing the Tesla Chill Collection. The Women's Chill Half Zip Cropped Hoodie has a premium, soft fleece exterior and cropped silhouette for comfort in everyday lifestyle. The hoodie features an elastic hem that gathers at the waist, subtle thermoplastic polyurethane Tesla logos along the hood and on the sleeve, a double layer single seam hood and a custom ring zipper pull. Made from 60% cotton and 40% recycled polyester.",
-            image:'1740226-00-A_0_2000.jpg',
-            inStock: 10,
-            price: 130,
-            slug: "women_chill_half_zip_cropped_hoodie",
-            tags: ['hoodie'],
-            title: "Women's Chill Half Zip Cropped Hoodie",
-            gender: 'niños'
-        },
-        {
-            description: "Introducing the Tesla Raven Collection. The Women's Raven Slouchy Crew Sweatshirt has a premium, relaxed silhouette made from a sustainable bamboo cotton blend. The slouchy crew features a subtle thermoplastic polyurethane Tesla wordmark on the left sleeve and a french terry interior for a cozy look and feel in every season. Pair it with your Raven Joggers or favorite on the go fit. Made from 70% bamboo and 30% cotton.",
-            image: '1740260-00-A_0_2000.jpg',
-            inStock: 9,
-            price: 110,
-            slug: "women_raven_slouchy_crew_sweatshirt",
-            tags: ['hoodie'],
-            title: "Women's Raven Slouchy Crew Sweatshirt",
-            gender: 'drama'
-        },
-        {
-            description: "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Women's Turbine Cropped Long Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style with a cropped silhouette. Made from 50% cotton and 50%",
-            image:'1740290-00-A_0_2000.jpg',
-            inStock: 10,
-            price: 45,
-            slug: "women_turbine_cropped_long_sleeve_tee",
-            tags: ['shirt'],
-            title: "Women's Turbine Cropped Long Sleeve Tee",
-            gender: 'educacional'
-        },
-        {
-            description: "ntroducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Women's Turbine Cropped Short Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style with a cropped silhouette. Made from 50% cotton and 50% polyester.",
-            image:'1741441-00-A_0_2000.jpg',
-            inStock: 0,
-            price: 40,
-            slug: "women_turbine_cropped_short_sleeve_tee",
-            tags: ['shirt'],
-            title: "Women's Turbine Cropped Short Sleeve Tee",
-            gender: 'educacional'
-        },
+        // {
+        //     description: "Designed for fit, comfort and style, the Men's 3D Wordmark Long Sleeve Tee is made from 100% cotton and features an understated wordmark logo on the left chest.",
+        //     image: '8764813-00-A_0_2000.jpg',
+        //     inStock: 15,
+        //     price: 40,
+        //     slug: "men_3d_wordmark_long_sleeve_tee",
+        //     tags: ['shirt'],
+        //     title: "Men's 3D Wordmark Long Sleeve Tee",
+        //     gender: 'terror'
+        // },
+        // {
+        //     description: "Designed for fit, comfort and style, the Men's 3D T Logo Long Sleeve Tee is made from 100% cotton and features an understated T logo on the left chest.",
+        //     image: '8529198-00-A_0_2000.jpg',
+        //     inStock: 12,
+        //     price: 40,
+        //     slug: "men_3d_t_logo_long_sleeve_tee",
+        //     tags: ['shirt'],
+        //     title: "Men's 3D T Logo Long Sleeve Tee",
+        //     gender: 'terror'
+        // },
+        // {
+        //     description: "Introducing the Tesla Raven Collection. The Men's Raven Lightweight Hoodie has a premium, relaxed silhouette made from a sustainable bamboo cotton blend. The hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve with a french terry interior for versatility in any season. Made from 70% bamboo and 30% cotton.",
+        //     image: '1740245-00-A_0_2000.jpg',
+        //     inStock: 10,
+        //     price: 115,
+        //     slug: "men_raven_lightweight_hoodie",
+        //     tags: ['hoodie'],
+        //     title: "Men's Raven Lightweight Hoodie",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "Introducing the Tesla Chill Collection. The Chill Pullover Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The unisex hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
+        //     image: '1740051-00-A_0_2000.jpg',
+        //     inStock: 10,
+        //     price: 130,
+        //     slug: "chill_pullover_hoodie",
+        //     tags: ['hoodie'],
+        //     title: "Chill Pullover Hoodie",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "Introducing the Tesla Chill Collection. The Men's Chill Full Zip Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The hoodie features subtle thermoplastic polyurethane Tesla logos on the left chest and sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
+        //     image: '1741111-00-A_0_2000.jpg',
+        //     inStock: 100,
+        //     price: 85,
+        //     slug: "men_chill_full_zip_hoodie",
+        //     tags: ['shirt'],
+        //     title: "Men's Chill Full Zip Hoodie",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "Introducing the Tesla Chill Collection. The Men’s Chill Quarter Zip Pullover has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The pullover features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, as well as a custom matte zipper pull. Made from 60% cotton and 40% recycled polyester.",
+        //     image: '1740140-00-A_0_2000.jpg',
+        //     inStock: 7,
+        //     price: 85,
+        //     slug: "men_chill_quarter_zip_pullover_-_gray",
+        //     tags: ['shirt'],
+        //     title: "Men's Chill Quarter Zip Pullover - Gray",
+        //     gender: 'niños'
+        // },
+        // {
+        //     description: "Introducing the Tesla Chill Collection. The Men’s Chill Quarter Zip Pullover has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The pullover features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, as well as a custom matte zipper pull. Made from 60% cotton and 40% recycled polyester.",
+        //     image: '1740145-00-A_2_2000.jpg',
+        //     inStock: 15,
+        //     price: 85,
+        //     slug: "men_chill_quarter_zip_pullover_-_white",
+        //     tags: ['shirt'],
+        //     title: "Men's Chill Quarter Zip Pullover - White",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "The Unisex 3D Large Wordmark Pullover Hoodie features soft fleece and an adjustable, jersey-lined hood for comfort and coverage. Designed in a unisex style, the pullover hoodie includes a tone-on-tone 3D silicone-printed wordmark across the chest.",
+        //     image:'8529107-00-A_0_2000.jpg',
+        //     inStock: 15,
+        //     price: 70,
+        //     slug: "3d_large_wordmark_pullover_hoodie",
+        //     tags: ['hoodie'],
+        //     title: "3D Large Wordmark Pullover Hoodie",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "As with the iconic Tesla logo, the Cybertruck Graffiti Hoodie is a classic in the making. Unisex style featuring soft fleece and an adjustable, jersey-lined hood for comfortable coverage.",
+        //     image:'7654420-00-A_0_2000.jpg',
+        //     inStock: 13,
+        //     price: 60,
+        //     slug: "cybertruck_graffiti_hoodie",
+        //     tags: ['hoodie'],
+        //     title: "Cybertruck Graffiti Hoodie",
+        //     gender: 'científico'
+        // },
+        // {
+        //     description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
+        //     image: '1657932-00-A_0_2000.jpg',
+        //     inStock: 11,
+        //     price: 30,
+        //     slug: "relaxed_t_logo_hat",
+        //     tags: ['hats'],
+        //     title: "Relaxed T Logo Hat",
+        //     gender: 'terror'
+        // },
+        // {
+        //     description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
+        //     image:'1740417-00-A_0_2000.jpg',
+        //     inStock: 13,
+        //     price: 35,
+        //     slug: "thermal_cuffed_beanie",
+        //     tags: ['hats'],
+        //     title: "Thermal Cuffed Beanie",
+        //     gender: 'niños'
+        // },
+        // {
+        //     description: "The Women's Cropped Puffer Jacket features a uniquely cropped silhouette for the perfect, modern style while on the go during the cozy season ahead. The puffer features subtle silicone injected Tesla logos below the back collar and on the right sleeve, custom matte metal zipper pulls and a soft, fleece lined collar. Made from 87% nylon and 13% polyurethane.",
+        //     image:'1740535-00-A_0_2000.jpg',
+        //     inStock: 85,
+        //     price: 225,
+        //     slug: "women_cropped_puffer_jacket",
+        //     tags: ['hoodie'],
+        //     title: "Women's Cropped Puffer Jacket",
+        //     gender: 'informática'
+        // },
+        // {
+        //     description: "Introducing the Tesla Chill Collection. The Women's Chill Half Zip Cropped Hoodie has a premium, soft fleece exterior and cropped silhouette for comfort in everyday lifestyle. The hoodie features an elastic hem that gathers at the waist, subtle thermoplastic polyurethane Tesla logos along the hood and on the sleeve, a double layer single seam hood and a custom ring zipper pull. Made from 60% cotton and 40% recycled polyester.",
+        //     image:'1740226-00-A_0_2000.jpg',
+        //     inStock: 10,
+        //     price: 130,
+        //     slug: "women_chill_half_zip_cropped_hoodie",
+        //     tags: ['hoodie'],
+        //     title: "Women's Chill Half Zip Cropped Hoodie",
+        //     gender: 'niños'
+        // },
+        // {
+        //     description: "Introducing the Tesla Raven Collection. The Women's Raven Slouchy Crew Sweatshirt has a premium, relaxed silhouette made from a sustainable bamboo cotton blend. The slouchy crew features a subtle thermoplastic polyurethane Tesla wordmark on the left sleeve and a french terry interior for a cozy look and feel in every season. Pair it with your Raven Joggers or favorite on the go fit. Made from 70% bamboo and 30% cotton.",
+        //     image: '1740260-00-A_0_2000.jpg',
+        //     inStock: 9,
+        //     price: 110,
+        //     slug: "women_raven_slouchy_crew_sweatshirt",
+        //     tags: ['hoodie'],
+        //     title: "Women's Raven Slouchy Crew Sweatshirt",
+        //     gender: 'drama'
+        // },
+        // {
+        //     description: "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Women's Turbine Cropped Long Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style with a cropped silhouette. Made from 50% cotton and 50%",
+        //     image:'1740290-00-A_0_2000.jpg',
+        //     inStock: 10,
+        //     price: 45,
+        //     slug: "women_turbine_cropped_long_sleeve_tee",
+        //     tags: ['shirt'],
+        //     title: "Women's Turbine Cropped Long Sleeve Tee",
+        //     gender: 'educacional'
+        // },
+        // {
+        //     description: "ntroducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Women's Turbine Cropped Short Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style with a cropped silhouette. Made from 50% cotton and 50% polyester.",
+        //     image:'1741441-00-A_0_2000.jpg',
+        //     inStock: 0,
+        //     price: 40,
+        //     slug: "women_turbine_cropped_short_sleeve_tee",
+        //     tags: ['shirt'],
+        //     title: "Women's Turbine Cropped Short Sleeve Tee",
+        //     gender: 'educacional'
+        // },
 //         {
 //             description: "Designed for style and comfort, the ultrasoft Women's T Logo Short Sleeve Scoop Neck Tee features a tonal 3D silicone-printed T logo on the left chest. Made of 50% Peruvian cotton and 50% Peruvian viscose.",
 //             images: [
