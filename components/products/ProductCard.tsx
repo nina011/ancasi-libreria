@@ -2,6 +2,9 @@ import { FC, useMemo, useState } from 'react'
 import NextLink from 'next/link';
 import { Box, Card, CardActionArea, CardMedia, Grid, Typography, Link, Chip } from '@mui/material'
 import { IBook } from '../../interfaces'
+import { GetServerSideProps } from 'next';
+import path from 'path';
+
 
 interface Props {
     product: IBook;
@@ -12,11 +15,11 @@ export const ProductCard: FC<Props> = ({ product }) => {
     const [isHovered, setIsHovered] = useState(false)
     const [isImageLoaded, setIsImageLoaded] = useState(false)
 
-    const productImage = useMemo(() => {
-        return isHovered
-            ? `/products/${product.images[1]}`
-            : `/products/${product.images[0]}`
-    }, [isHovered, product.images])
+    // const productImage = useMemo(() => {
+    //     return isHovered
+    //         ? `/products/${product.images[1]}`
+    //         : `/products/${product.images[0]}`
+    // }, [isHovered, product.images])
 
     return (
         <Grid
@@ -57,7 +60,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                                 key={product._id}
                                 component={'img'}
                                 className='fadeIn'
-                                image={productImage}
+                                image={`/books/` + product.image}
                                 alt={product.title}
                                 onLoad={() => setIsImageLoaded(true)}
                             />
@@ -84,3 +87,4 @@ export const ProductCard: FC<Props> = ({ product }) => {
         </Grid>
     )
 }
+

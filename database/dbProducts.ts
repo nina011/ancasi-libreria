@@ -20,7 +20,7 @@ interface ProductSlug{
     slug: string
 }
 
-export const getAllProductsSlugs = async(): Promise<ProductSlug[]> => {
+export const getAllBooksSlugs = async(): Promise<ProductSlug[]> => {
     await db.connect()
     const slugs = await Book.find().select('slug -_id').lean()
     await db.disconnect()
@@ -34,23 +34,23 @@ export const getProductsByTerm = async ( term: string ):Promise<IBook[]> => {
 
     await db.connect()
 
-    const products = await Book.find({
+    const books = await Book.find({
         $text: { $search: term }
     })
-    .select('title images price inStock slug -_id')
+    .select('title image price inStock slug -_id')
     .lean()
 
     await db.disconnect()
 
-    return products;
+    return books;
 }
 
-export const getAllProducts = async(): Promise<IBook[]> =>{
+export const getAllBooks = async(): Promise<IBook[]> =>{
 
     await db.connect()
-    const allProducts = await Book.find().select('-_id')
+    const allBooks = await Book.find().select('-_id')
     await db.disconnect()
 
-    return JSON.parse( JSON.stringify( allProducts ))
+    return JSON.parse( JSON.stringify( allBooks ))
 
 }

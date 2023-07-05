@@ -15,13 +15,13 @@ import SizeSelector from '../../components/products/SizeSelector'
 
 // import { useProducts } from '../../hooks'
 import { dbProducts } from '../../database'
-import { ICartProduct, IProduct, ISize } from '../../interfaces'
+import { ICartProduct, IBook } from '../../interfaces'
 
 
 // const product = initialData.products[0]
 
 interface Props{
-  product: IProduct
+  product: IBook
 }
 
 const ProductPage:NextPage<Props> = ({ product }) => {
@@ -31,21 +31,21 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 
   const [ tempCartProduct, setTempCartProduct ] = useState<ICartProduct>({
     _id: product._id,
-    image: product.images[0],
+    image: product.image,
     price: product.price,
-    size: undefined,
+    // size: undefined,
     slug: product.slug,
     title: product.title,
     gender: product.gender,
     quantity: 1
   })
 
-  const onSelectedSize = (size: ISize) => {
-    setTempCartProduct(currentProduct => ({
-      ...currentProduct,
-      size: size
-    }))
-  }
+  // const onSelectedSize = (size: ISize) => {
+  //   setTempCartProduct(currentProduct => ({
+  //     ...currentProduct,
+  //     size: size
+  //   }))
+  // }
 
   const onUpdateQuantity = (newQuantity: number) => {
     setTempCartProduct(currentProduct => ({
@@ -55,9 +55,9 @@ const ProductPage:NextPage<Props> = ({ product }) => {
   }
 
   const onAddProduct = () => {
-    if(!tempCartProduct.size){
-      return
-    }
+    // if(!tempCartProduct.size){
+    //   return
+    // }
 
     //TODO: llamar la accion del context para agregar al carrito
     addProductToCart(tempCartProduct)
@@ -79,7 +79,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
           sm={7}
         >
           <ProductSlideShow 
-            images={ product.images }
+            image={ product.image }
           />
         </Grid>
 
@@ -116,11 +116,11 @@ const ProductPage:NextPage<Props> = ({ product }) => {
                 maxValue={ product.inStock > 5 ? 5 : product.inStock }              
               />
 
-              <SizeSelector 
+              {/* <SizeSelector 
                 selectedSize={ tempCartProduct.size }
                 sizes={ product.sizes }
                 onSelectedSize={(size) => onSelectedSize(size)}
-              />
+              /> */}
               <Typography
                 variant='subtitle2'
                 >
@@ -134,11 +134,11 @@ const ProductPage:NextPage<Props> = ({ product }) => {
               className='circular-btn'
               onClick={onAddProduct}
             >
-              {
+              {/* {
                 tempCartProduct.size
                 ? 'Agregar al carritoOO'
                 : 'Selecione una talla'
-              }
+              } */}
             </Button>
 
             <Chip
@@ -192,7 +192,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   
-  const productSlugs = await dbProducts.getAllProductsSlugs();
+  const productSlugs = await dbProducts.getAllBooksSlugs();
   
   return {
     paths: productSlugs.map( ({ slug }) => ({

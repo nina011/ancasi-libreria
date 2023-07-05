@@ -3,7 +3,7 @@ import { IBook } from '../interfaces';
 
 const bookSchema = new Schema({
     description: { type: String, required: true },
-    images: [{ type: String }],
+    image: { type: String },
     inStock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
     slug: { type: String, required: true, unique: true },

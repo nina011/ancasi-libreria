@@ -2,6 +2,8 @@ import { Grid } from '@mui/material';
 import { FC } from 'react';
 import { IBook } from '../../interfaces';
 import { ProductCard } from './ProductCard';
+import { GetServerSideProps } from 'next';
+import path from 'path';
 
 
 interface Props{
@@ -27,5 +29,6 @@ const ProductList: FC<Props> = ({ products }) => {
     </Grid>
   )
 }
+
 
 export default ProductList

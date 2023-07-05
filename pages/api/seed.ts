@@ -22,7 +22,7 @@ export default async function handler(
     await User.insertMany( seedDatabase.initialData.users )
 
     await Book.deleteMany()
-    await Book.insertMany(seedDatabase.initialData.products)
+    await Book.insertMany(seedDatabase.initialData.books)
 
     await db.disconnect()
     

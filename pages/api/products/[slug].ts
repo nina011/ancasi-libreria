@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../database'
-import { IProduct } from '../../../interfaces'
-import { Product } from '../../../models';
+import { IBook } from '../../../interfaces'
+import { Book } from '../../../models';
 
 type Data = 
 | { message: string }
-| IProduct;
+| IBook;
 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -27,7 +27,7 @@ async function getProductsBySlug(req: NextApiRequest, res: NextApiResponse<Data>
     await db.connect()
     const { slug } = req.query;
 
-    const product = await Product.findOne({ slug }).lean()
+    const product = await Book.findOne({ slug }).lean()
 
     await db.disconnect()
 
