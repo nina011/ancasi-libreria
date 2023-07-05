@@ -1,15 +1,14 @@
-// import { ISize } from "./Book";
-
-export interface ICartProduct {
+export interface IBook {
     _id: string;
-    description?: string;
-    image: string;
+    description: string;
+    images: string[];
+    inStock: number;
     price: number;
-    // size?: ISize;
     slug: string;
+    tags: string[];
     title: string;
     gender: 
-    'drama' 
+     'drama' 
     |'ficción'
     |'novela'
     |'terror'
@@ -24,6 +23,8 @@ export interface ICartProduct {
     |'educacional'
     |'niños'
     |'física'
-    |'informática';
-    quantity: number;
+    |'informática'
+
+    createdAt: string;
+    updatedAt: string;
 }

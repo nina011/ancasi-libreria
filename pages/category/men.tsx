@@ -3,7 +3,7 @@ import { ShopLayout } from '../../components/layouts'
 import { Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
 // import { initialData } from '../database/products'
 import ProductList from '../../components/products/ProductList'
-import { IProduct } from '../../interfaces'
+// import { IProduct } from '../../interfaces'
 import { useProducts } from '../../hooks'
 import { FullScreenLoading } from '../../components/ui'
 

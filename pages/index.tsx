@@ -3,7 +3,7 @@ import { ShopLayout } from '../components/layouts'
 import { Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
 // import { initialData } from '../database/products'
 import ProductList from '../components/products/ProductList'
-import { IProduct } from '../interfaces'
+// import { IProduct } from '../interfaces'
 import { useProducts } from '../hooks'
 import { FullScreenLoading } from '../components/ui'
 
@@ -17,7 +17,7 @@ const HomePage: NextPage = () => {
 
   return (
     <ShopLayout 
-        title={'Teslo-Shop - Home'}
+        title={'Librería-Ancasi - Home'}
         pageDescription={'Encuentra los mejores productos aquí!'}
     >
       <Typography
@@ -31,7 +31,7 @@ const HomePage: NextPage = () => {
           variant='h2'
           sx={{ mb: 1 }}
       >
-        Todos los productos
+        Todos los libros
       </Typography>
 
 

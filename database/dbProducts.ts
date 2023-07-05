@@ -1,12 +1,12 @@
 import { db } from "."
-import { IProduct } from "../interfaces"
-import { Product } from "../models"
+import { IBook } from "../interfaces"
+import { Book } from "../models"
 
-export const getProductBySlug = async(slug: string): Promise<IProduct | null> => {
+export const getProductBySlug = async(slug: string): Promise<IBook | null> => {
 
     await db.connect()
 
-    const product = await Product.findOne({ slug }).lean()
+    const product = await Book.findOne({ slug }).lean()
 
     await db.disconnect()
 
@@ -22,19 +22,19 @@ interface ProductSlug{
 
 export const getAllProductsSlugs = async(): Promise<ProductSlug[]> => {
     await db.connect()
-    const slugs = await Product.find().select('slug -_id').lean()
+    const slugs = await Book.find().select('slug -_id').lean()
     await db.disconnect()
 
     return slugs
 }
 
-export const getProductsByTerm = async ( term: string ):Promise<IProduct[]> => {
+export const getProductsByTerm = async ( term: string ):Promise<IBook[]> => {
 
     term = term.toString().toLowerCase()
 
     await db.connect()
 
-    const products = await Product.find({
+    const products = await Book.find({
         $text: { $search: term }
     })
     .select('title images price inStock slug -_id')
@@ -45,10 +45,10 @@ export const getProductsByTerm = async ( term: string ):Promise<IProduct[]> => {
     return products;
 }
 
-export const getAllProducts = async(): Promise<IProduct[]> =>{
+export const getAllProducts = async(): Promise<IBook[]> =>{
 
     await db.connect()
-    const allProducts = await Product.find().select('-_id')
+    const allProducts = await Book.find().select('-_id')
     await db.disconnect()
 
     return JSON.parse( JSON.stringify( allProducts ))

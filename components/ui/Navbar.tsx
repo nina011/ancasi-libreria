@@ -30,8 +30,8 @@ export const Navbar = () => {
             <Toolbar>
                 <NextLink href={'/'} passHref legacyBehavior>
                     <Link display={'flex'} alignItems={'center'}>
-                        <Typography variant='h6'>Teslo</Typography>
-                        <Typography sx={{ ml: 0.5 }}>Shop</Typography>
+                        <Typography variant='h6'>Librería</Typography>
+                        <Typography sx={{ ml: 0.5 }}>Ancasi</Typography>
                     </Link>
                 </NextLink>
 

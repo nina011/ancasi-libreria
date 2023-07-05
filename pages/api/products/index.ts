@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db, SHOP_CONSTANTS } from '../../../database'
-import { Product } from '../../../models'
-import { IProduct } from '../../../interfaces'
+import { Book } from '../../../models'
+import { IBook } from '../../../interfaces'
 
 type Data = 
     | { message: string }
-    | IProduct[]
+    | IBook[]
 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -30,7 +30,7 @@ const getProducts = async(req: NextApiRequest, res: NextApiResponse<Data>) => {
         condition = { gender: gender }
     }
     await db.connect();
-    const products = await Product.find(condition)
+    const products = await Book.find(condition)
                                   .select('title images price inStock slug -_id')
                                   .lean();
 

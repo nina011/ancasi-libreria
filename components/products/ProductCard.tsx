@@ -1,10 +1,10 @@
 import { FC, useMemo, useState } from 'react'
 import NextLink from 'next/link';
 import { Box, Card, CardActionArea, CardMedia, Grid, Typography, Link, Chip } from '@mui/material'
-import { IProduct } from '../../interfaces'
+import { IBook } from '../../interfaces'
 
 interface Props {
-    product: IProduct;
+    product: IBook;
 }
 
 export const ProductCard: FC<Props> = ({ product }) => {
