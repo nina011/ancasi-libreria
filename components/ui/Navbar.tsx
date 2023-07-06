@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
 
-import { AppBar, Toolbar, Link, Typography, Button, Box, IconButton, Badge, Input, InputAdornment } from "@mui/material"
+import { AppBar, Toolbar, Link, Typography, Button, Box, IconButton, Badge, Input, InputAdornment, Tooltip } from "@mui/material"
 import { ClearOutlined, SearchOffOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
@@ -113,6 +113,9 @@ export const Navbar = () => {
                         )
                         :
                         (
+                            <Tooltip
+                                title='Aquí puedes buscar por autor o palabra del titulo'
+                                >
                             <IconButton
                                 // sx={{ display: { xs: 'flex', sm: 'none' } }}
                                 // onClick={toggleSideMenu}
@@ -120,6 +123,7 @@ export const Navbar = () => {
                             >
                                 <SearchOutlined />
                             </IconButton>
+                            </Tooltip>
                         )
                 }
                 
