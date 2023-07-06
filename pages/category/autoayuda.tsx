@@ -13,25 +13,25 @@ const MenPage: NextPage = () => {
   // if(error) return <div>failed to load</div>
   // if(!data) return <div>loading...</div>
 
-  const { products, isLoading } = useProducts('/products?gender=men');
+  const { products, isLoading } = useProducts('/products?gender=autoayuda');
 
   return (
     <ShopLayout 
-        title={'Teslo-Shop - Men'}
-        pageDescription={'Encuentra los mejores productos de Teslo para ellos'}
+        title={'Ancasi Librería - Autoayuda'}
+        pageDescription={'Encuentra los mejores libros de autoayuda'}
     >
       <Typography
           variant='h1'
           component='h1'
       >
-        Hombres
+        Autoayuda
       </Typography>
 
       <Typography
           variant='h2'
           sx={{ mb: 1 }}
       >
-        Productos para ellos
+        Libros para tu salud mental
       </Typography>
 
 

@@ -46,15 +46,15 @@ export const Navbar = () => {
                         sm: 'flex '
                     }
                 }}>
-                    <NextLink href='/category/men' passHref legacyBehavior>
+                    <NextLink href='/category/autoayuda' passHref legacyBehavior>
                         <Link>
                             <Button
-                                color={asPath === '/category/men'
+                                color={asPath === '/category/autoayuda'
                                     ? 'primary'
                                     : 'info'
                                 }
                             >
-                                Hombres
+                                Autoayuda
                             </Button>
                         </Link>
                     </NextLink>
