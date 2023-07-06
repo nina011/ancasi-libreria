@@ -138,7 +138,10 @@ export const Navbar = () => {
                                     <InputAdornment position="end">
                                         <IconButton
                                             // onClick={onSearchTerm}
-                                            onClick={() => setIsSearchVisible(false)}
+                                            onClick={() => {
+                                                setIsSearchVisible(false)
+                                                push('/')
+                                            }}
                                             className='fadein'
                                         >
                                             <ClearOutlined />

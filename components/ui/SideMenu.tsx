@@ -1,4 +1,21 @@
-import { AccountCircleOutlined, AdminPanelSettings, CategoryOutlined, ConfirmationNumberOutlined, EscalatorWarningOutlined, FemaleOutlined, LoginOutlined, MaleOutlined, SearchOffOutlined, VpnKeyOutlined } from "@mui/icons-material"
+import { 
+    AccountCircleOutlined, 
+    AdminPanelSettings, 
+    CategoryOutlined, 
+    ConfirmationNumberOutlined, 
+    EscalatorWarningOutlined, 
+    FemaleOutlined, 
+    LoginOutlined, 
+    MaleOutlined, 
+    SearchOffOutlined, 
+    VpnKeyOutlined,
+    Accessibility,
+    FilterDrama,
+    Gavel,
+    PrecisionManufacturing,
+    Thunderstorm,
+    LaptopChromebook
+} from "@mui/icons-material"
 import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext, UIContext } from "../../context"
@@ -85,35 +102,66 @@ export const SideMenu = () => {
                     <ListItem
                         button
                         // sx={{ display: { xs: '', sm: 'none' } }}
-                        onClick={() => navigateTo('/category/men')}
+                        onClick={() => navigateTo('/category/autoayuda')}
                     >
                         <ListItemIcon>
-                            <MaleOutlined />
+                            <Accessibility />
                         </ListItemIcon>
-                        <ListItemText primary={'Hombres'} />
+                        <ListItemText primary={'Autoayuda'} />
                     </ListItem>
 
                     <ListItem
                         button
                         // sx={{ display: { xs: '', sm: 'none' } }}
-                        onClick={() => navigateTo('/category/women')}
+                        onClick={() => navigateTo('/category/drama')}
                     >
                         <ListItemIcon>
-                            <FemaleOutlined />
+                            <FilterDrama />
                         </ListItemIcon>
-                        <ListItemText primary={'Mujeres'} />
+                        <ListItemText primary={'Drama'} />
                     </ListItem>
 
                     <ListItem
                         button
                         // sx={{ display: { xs: '', sm: 'none' } }}
-                        onClick={() => navigateTo('/category/kid')}
+                        onClick={() => navigateTo('/category/novela')}
                     >
                         <ListItemIcon>
-                            <EscalatorWarningOutlined />
+                            <Gavel />
                         </ListItemIcon>
-                        <ListItemText primary={'Niños'} />
+                        <ListItemText primary={'Novelas'} />
                     </ListItem>
+                    <ListItem
+                        button
+                        // sx={{ display: { xs: '', sm: 'none' } }}
+                        onClick={() => navigateTo('/category/ficcion')}
+                    >
+                        <ListItemIcon>
+                            <PrecisionManufacturing />
+                        </ListItemIcon>
+                        <ListItemText primary={'Ficción'} />
+                    </ListItem>
+                    <ListItem
+                        button
+                        // sx={{ display: { xs: '', sm: 'none' } }}
+                        onClick={() => navigateTo('/category/terror')}
+                    >
+                        <ListItemIcon>
+                            <Thunderstorm />
+                        </ListItemIcon>
+                        <ListItemText primary={'Terror'} />
+                    </ListItem>
+                    <ListItem
+                        button
+                        // sx={{ display: { xs: '', sm: 'none' } }}
+                        onClick={() => navigateTo('/category/informatica')}
+                    >
+                        <ListItemIcon>
+                            <LaptopChromebook />
+                        </ListItemIcon>
+                        <ListItemText primary={'Informatica'} />
+                    </ListItem>
+                    
 
 
                     {
