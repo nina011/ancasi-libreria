@@ -60,7 +60,7 @@ const UsersPage = () => {
         >
             <Box>
                 <PeopleOutline />
-                <h3>Usuaios</h3>
+                <h3>Usuarios</h3>
             </Box>
             <Box>
                 <Typography>
