@@ -4,10 +4,14 @@ import { CartList, OrderSummary } from "../../components/cart"
 import { useContext, useEffect } from "react"
 import { CartContext } from "../../context"
 import { useRouter } from "next/router"
+import { AuthContext } from '../../context'
 
 const CartPage = () => {
 
+
     const { isLoaded, numberOfItems, cart } = useContext(CartContext)
+    const { checkToken } = useContext(AuthContext)
+
     const router = useRouter()
     
     useEffect(() => {
@@ -59,8 +63,16 @@ const CartPage = () => {
                                 color='secondary'
                                 className='circular-btn'
                                 fullWidth
+                                onClick={async() => {
+                                    const validate = await checkToken()
+                                    if(validate === undefined || !validate){
+                                        alert('Para comprar es necesario loguearse')
+                                       router.push('/auth/login')
+                                    }
+                                    
+                                }}
                             >
-                                Comprar0
+                                Comprar
                             </Button>
 
                         </Box>
@@ -73,3 +85,4 @@ const CartPage = () => {
 }
 
 export default CartPage
+

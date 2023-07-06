@@ -30,11 +30,9 @@ export const AuthProvider : FC<Props> = ({ children }) => {
 
     useEffect(()=>{
         checkToken()
-    }
-    ,[])
+    },[])
 
     const checkToken = async() => {
-
     if(!Cookies.get('token')){
         return;
     }
@@ -111,7 +109,8 @@ export const AuthProvider : FC<Props> = ({ children }) => {
                 ...state,
                 loginUser,
                 registerUser,
-                logout
+                logout,
+                checkToken
             }}
         >
             { children }
