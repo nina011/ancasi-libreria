@@ -17,6 +17,7 @@ import SizeSelector from '../../components/products/SizeSelector'
 import { dbProducts } from '../../database'
 import { ICartProduct, IBook } from '../../interfaces'
 
+import styles from './slug.module.css'
 
 // const product = initialData.products[0]
 
@@ -91,6 +92,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
           <Box
             display='flex'
             flexDirection='column'
+            ml={10}
           >
             <Typography
               variant='h1'
@@ -108,7 +110,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 
             {/** Cantidad */}
             <Box
-              sx={{ my: 12 }}
+              sx={{ my: 5 }}
             >
               <ItemCounter 
                 currentValue={tempCartProduct.quantity}
@@ -133,19 +135,28 @@ const ProductPage:NextPage<Props> = ({ product }) => {
               color='secondary'
               className='circular-btn'
               onClick={onAddProduct}
+              disabled={product.inStock === 0}
+              style={{
+                width: '15rem',
+                marginBottom: '1rem'
+              }}
             >
-              {/* {
-                tempCartProduct.size
-                ? 'Agregar al carritoOO'
-                : 'Selecione una talla'
-              } */}
+              {
+               'Agregar al carrito'
+              }
             </Button>
 
-            <Chip
+            {
+              product.inStock === 0 && (
+              <Chip
               label="No hay disponibles"
               color="error"
               variant="outlined"
-            />
+              style={{
+                width: '15rem'
+              }}
+            />)
+            }
 
             <Box
               sx={{ mt: 3 }}

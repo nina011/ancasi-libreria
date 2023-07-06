@@ -63,6 +63,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
                                 image={`/books/` + product.image}
                                 alt={product.title}
                                 onLoad={() => setIsImageLoaded(true)}
+                                height={500}
+                                width={400}
                             />
                         </CardActionArea>
                     </Link>
