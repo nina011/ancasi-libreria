@@ -3,6 +3,7 @@ import { Slide } from 'react-slideshow-image'
 
 import styles from './ProductSlideshow.module.css'
 import 'react-slideshow-image/dist/styles.css'
+import { Widgets } from "@mui/icons-material"
 
 interface Props {
     image: string
@@ -23,6 +24,7 @@ export const ProductSlideShow: FC<Props> = ({ image }) => {
                             style={{
                                 backgroundImage: `url(${ `/books/${ image }` })`,
                                 backgroundSize: 'cover'
+
                             }}                            
                         >
                         </div>

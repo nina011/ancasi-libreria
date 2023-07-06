@@ -60,7 +60,7 @@ export const CartProvider:FC<Props> = ({ children }) => {
             numberOfItems,
             subTotal,
             tax: subTotal * taxRate,
-            total: subTotal * ( taxRate + 1 )
+            total: subTotal 
         }
 
         dispatch({
@@ -85,14 +85,14 @@ export const CartProvider:FC<Props> = ({ children }) => {
         const productInCart = state.cart.some( p => p._id === product._id)
         if( !productInCart ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ]})
     
-        const productInCartDifferentSize = state.cart.some( p => p._id === product._id && p.size === product.size)
-        if( !productInCartDifferentSize ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ]})
+        // const productInCartDifferentSize = state.cart.some( p => p._id === product._id && p.size === product.size)
+        // if( !productInCartDifferentSize ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ]})
     
         // si el producto existe y tabien en la misma talla.. hay que acumuar
         
         const updatedProducts = state.cart.map(p => {
             if(p._id !== product._id) return p;
-            if(p.size !== product.size) return p;
+            // if(p.size !== product.size) return p;
 
             //atualiza cantidad
             p.quantity += product.quantity;
