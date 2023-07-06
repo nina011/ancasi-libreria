@@ -31,7 +31,7 @@ export const getAllBooksSlugs = async(): Promise<ProductSlug[]> => {
 export const getProductsByTerm = async ( term: string ):Promise<IBook[]> => {
 
     term = term.toString().toLowerCase()
-    console.log('term', term)
+
     await db.connect()
 
     const books = await Book.find({
@@ -39,7 +39,7 @@ export const getProductsByTerm = async ( term: string ):Promise<IBook[]> => {
     })
     .select('title author image price inStock slug -_id')
     .lean()
-    
+
     await db.disconnect()
 
     return books;
