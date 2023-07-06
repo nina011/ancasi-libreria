@@ -14,7 +14,7 @@ export const Navbar = () => {
 
     const [searchTerm, setSearchTerm] = useState('')
     const [isSearchVisible, setIsSearchVisible] = useState(false)
-
+    console.log('searchTerm', searchTerm)
     const onSearchTerm = () => {
         if (searchTerm.trim().length === 0) return;
         navigateTo(`/search/${searchTerm}`)

@@ -60,7 +60,7 @@ const CartPage = () => {
                                 className='circular-btn'
                                 fullWidth
                             >
-                                Comprar
+                                Comprar0
                             </Button>
 
                         </Box>

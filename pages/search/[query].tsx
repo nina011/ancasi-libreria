@@ -3,13 +3,13 @@ import { ShopLayout } from '../../components/layouts'
 import { Box, Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
 // import { initialData } from '../database/products'
 import ProductList from '../../components/products/ProductList'
-import { IProduct } from '../../interfaces'
+import { IBook } from '../../interfaces'
 // import { useProducts } from '../../hooks'
 // import { FullScreenLoading } from '../../components/ui'
 import { dbProducts } from '../../database'
 
 interface Props {
-  products: IProduct[];
+  products: IBook[];
   foundProducts: boolean;
   query: string
 }
@@ -77,9 +77,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   let products = await dbProducts.getProductsByTerm(query);
   const foundProducts = products.length > 0
-
+ 
   if (!foundProducts) {
-    products = await dbProducts.getAllProducts()
+    products = await dbProducts.getAllBooks()
   }
 
   return {

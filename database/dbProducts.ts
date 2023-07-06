@@ -31,15 +31,15 @@ export const getAllBooksSlugs = async(): Promise<ProductSlug[]> => {
 export const getProductsByTerm = async ( term: string ):Promise<IBook[]> => {
 
     term = term.toString().toLowerCase()
-
+    console.log('term', term)
     await db.connect()
 
     const books = await Book.find({
         $text: { $search: term }
     })
-    .select('title image price inStock slug -_id')
+    .select('title author image price inStock slug -_id')
     .lean()
-
+    
     await db.disconnect()
 
     return books;

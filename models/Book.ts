@@ -40,7 +40,7 @@ const bookSchema = new Schema({
     timestamps: true
 })
 
-bookSchema.index({ title: 'text', tags: 'text'})
+bookSchema.index({ title: 'text', tags: 'text', author:'text', price: 'text'})
 
 const Book: Model<IBook> = mongoose.models.Book || model('Book', bookSchema)
 
