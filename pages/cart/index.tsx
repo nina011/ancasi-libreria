@@ -69,7 +69,7 @@ const CartPage = () => {
                                         alert('Para comprar es necesario loguearse')
                                        router.push('/auth/login')
                                     }
-                                    
+                                    router.push('/checkout/address')
                                 }}
                             >
                                 Comprar

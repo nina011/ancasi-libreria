@@ -1,12 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { ShopLayout } from '../../components/layouts'
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Modal, Select, TextField, Typography } from '@mui/material'
 // import { NextServer } from 'next/dist/server/next'
 // import { GetServerSideProps } from 'next'
 // import { jwt } from '../../utils'
 import { countries } from '../../utils'
 import { SubresourceIntegrityAlgorithm } from 'next/dist/build/webpack/plugins/subresource-integrity-plugin'
 import { useForm } from 'react-hook-form'
+import style from 'styled-jsx/style'
 
 type FormData = {
     firstName: string;
@@ -21,6 +22,7 @@ type FormData = {
 
 const AddressPage: FC = () => {
 
+    const [modalVisible, setModalVisible ] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
     const onSubmitAddress = ( data: FormData) => {
@@ -147,7 +149,7 @@ const AddressPage: FC = () => {
                     />
                 </Grid>
 
-                <Grid
+                {/* <Grid
                     item
                     xs={12}
                     sm={6}
@@ -177,10 +179,10 @@ const AddressPage: FC = () => {
                             {/* <MenuItem value={1}>Chile</MenuItem>
                         <MenuItem value={2}>Honduras</MenuItem>
                         <MenuItem value={3}>El Salvador</MenuItem>
-                        <MenuItem value={4}>México</MenuItem> */}
+                        <MenuItem value={4}>México</MenuItem> 
                         </Select>
                     </FormControl>
-                </Grid>
+                </Grid> */}
                 <Grid
                     item
                     xs={12}
@@ -208,10 +210,30 @@ const AddressPage: FC = () => {
                     color='secondary'
                     className='circular-btn'
                     size='large'
+                    onClick={() => setModalVisible(true)}
                 >
-                    Revisar pedido
+                    Realizar pedido
                 </Button>
             </Box>
+            <Modal
+                open={modalVisible}
+                onClose={() => setModalVisible(false)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                >
+                <Box style={{
+                    width: '400',
+                    height: '500',
+                    backgroundColor: 'white'
+                }}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    ¡Estás a punto de pagar!
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Aquí es donde lleva a escoger metodos de pago y se integra con una aplicación de pago
+                    </Typography>
+                </Box>
+                </Modal>
         </ShopLayout>
     )
 }
