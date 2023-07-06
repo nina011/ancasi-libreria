@@ -3,47 +3,46 @@ import { ShopLayout } from '../../components/layouts'
 import { Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
 // import { initialData } from '../database/products'
 import ProductList from '../../components/products/ProductList'
-// import { IProduct } from '../../interfaces'
+import { IBook } from '../../interfaces'
 import { useProducts } from '../../hooks'
 import { FullScreenLoading } from '../../components/ui'
 
-const WomenPage: NextPage = () => {
+const InformaticaPage: NextPage = () => {
   // const { data, error } = useSWR('/api/products', fetcher)
 
   // if(error) return <div>failed to load</div>
   // if(!data) return <div>loading...</div>
 
-  const { products, isLoading } = useProducts('/products?gender=women');
+  const { products, isLoading } = useProducts('/products?gender=informática');
 
   return (
     <ShopLayout 
-        title={'Teslo-Shop - Women'}
-        pageDescription={'Encuentra los mejores productos de Teslo para ellas'}
+        title={'Ancasi Librería'}
+        pageDescription={'Encuentra los mejores libros de informática'}
     >
       <Typography
           variant='h1'
           component='h1'
       >
-        Mujeres
+        Informática
       </Typography>
 
       <Typography
           variant='h2'
           sx={{ mb: 1 }}
       >
-        Productos para ellas
+        Libros de informática
       </Typography>
-
-
-      {/* <Grid container spacing={4}>
+      
+      <Grid container spacing={4}>
         {
-          initialData.products.map( product => (
+          products.map( product => (
             <Grid item xs={6} sm={4} key={product.slug}>
               <Card>
                 <CardActionArea>
                   <CardMedia 
                     component={'img'}
-                    image={`products/${ product.images[0]}`}
+                    image={`products/${ product.image}`}
                     alt={ product.title }
                   />
                 </CardActionArea>
@@ -51,7 +50,7 @@ const WomenPage: NextPage = () => {
             </Grid>
           ))
         }
-      </Grid> */}
+      </Grid>
       {
         isLoading 
           ? <FullScreenLoading />
@@ -61,4 +60,4 @@ const WomenPage: NextPage = () => {
   )
 }
 
-export default WomenPage
+export default InformaticaPage;

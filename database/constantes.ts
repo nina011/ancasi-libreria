@@ -1,4 +1,4 @@
 export const SHOP_CONSTANTS = {
-    validGenders: ['autoayuda', 'women','kid','unisex'],
+    validGenders: ['autoayuda', 'drama','novela','ficción','terror','informática'],
     
 }

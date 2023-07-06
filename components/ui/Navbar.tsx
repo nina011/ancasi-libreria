@@ -59,28 +59,64 @@ export const Navbar = () => {
                         </Link>
                     </NextLink>
 
-                    <NextLink href='/category/women' passHref legacyBehavior>
+                    <NextLink href='/category/drama' passHref legacyBehavior>
                         <Link>
                             <Button
-                                color={asPath === '/category/women'
+                                color={asPath === '/category/drama'
                                     ? 'primary'
                                     : 'info'
                                 }
                             >
-                                Mujeres
+                                Drama
                             </Button>
                         </Link>
                     </NextLink>
 
-                    <NextLink href='/category/kid' passHref legacyBehavior>
+                    <NextLink href='/category/novela' passHref legacyBehavior>
                         <Link>
                             <Button
-                                color={asPath === '/category/kid'
+                                color={asPath === '/category/novela'
                                     ? 'primary'
                                     : 'info'
                                 }
                             >
-                                Niños
+                                Novela
+                            </Button>
+                        </Link>
+                    </NextLink>
+                    <NextLink href='/category/ficcion' passHref legacyBehavior>
+                        <Link>
+                            <Button
+                                color={asPath === '/category/ficcion'
+                                    ? 'primary'
+                                    : 'info'
+                                }
+                            >
+                                Ficción
+                            </Button>
+                        </Link>
+                    </NextLink>
+                    <NextLink href='/category/terror' passHref legacyBehavior>
+                        <Link>
+                            <Button
+                                color={asPath === '/category/terror'
+                                    ? 'primary'
+                                    : 'info'
+                                }
+                            >
+                                Terror
+                            </Button>
+                        </Link>
+                    </NextLink>
+                    <NextLink href='/category/informatica' passHref legacyBehavior>
+                        <Link>
+                            <Button
+                                color={asPath === '/category/informatica'
+                                    ? 'primary'
+                                    : 'info'
+                                }
+                            >
+                                Informática
                             </Button>
                         </Link>
                     </NextLink>

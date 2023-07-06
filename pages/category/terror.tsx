@@ -7,31 +7,31 @@ import { IBook } from '../../interfaces'
 import { useProducts } from '../../hooks'
 import { FullScreenLoading } from '../../components/ui'
 
-const KidsPage: NextPage = () => {
+const TerrorPage: NextPage = () => {
   // const { data, error } = useSWR('/api/products', fetcher)
 
   // if(error) return <div>failed to load</div>
   // if(!data) return <div>loading...</div>
 
-  const { products, isLoading } = useProducts('/products?gender=kid');
+  const { products, isLoading } = useProducts('/products?gender=terror');
 
   return (
     <ShopLayout 
-        title={'Teslo-Shop - Kids'}
-        pageDescription={'Encuentra los mejores productos de Teslo para niños'}
+        title={'Ancasi Librería'}
+        pageDescription={'Encuentra las mejores libros de terror'}
     >
       <Typography
           variant='h1'
           component='h1'
       >
-        Niños
+        Terror
       </Typography>
 
       <Typography
           variant='h2'
           sx={{ mb: 1 }}
       >
-        Productos para niños
+        Terror para leer
       </Typography>
       
       <Grid container spacing={4}>
@@ -60,4 +60,4 @@ const KidsPage: NextPage = () => {
   )
 }
 
-export default KidsPage
+export default TerrorPage
