@@ -2,8 +2,8 @@ import useSWR from 'swr';
 import NextLink from 'next/link';
 
 import { AdminLayout } from '../../components/layouts/AdminLayout';
-import { CategoryOutlined } from '@mui/icons-material';
-import {  CardMedia, Grid, Link } from '@mui/material';
+import { AddOutlined, CategoryOutlined } from '@mui/icons-material';
+import {  Box, Button, CardMedia, Grid, Link } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 import { IBook } from '../../interfaces';
@@ -69,6 +69,19 @@ const BooksPage = () => {
             subTitle='Mantenimiento de libros'
             icon={<CategoryOutlined />}
         >
+            <Box
+                display='flex'
+                justifyContent='end'
+                sx={{ smb: 2 }}
+            >
+                <Button 
+                    startIcon={ <AddOutlined />}
+                    color='secondary'
+                    href='/admin/books/new'
+                >
+                    Crear libro
+                </Button>
+            </Box>
             <Grid container className='fadeIn'>
                 <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
                     <DataGrid

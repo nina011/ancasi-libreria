@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
+import { useForm } from 'react-hook-form';
 import { AdminLayout } from '../../../components/layouts/AdminLayout';
 import { IBook } from '../../../interfaces';
 import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import { dbProducts } from '../../../database';
 import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
+import { tesloApi } from '../../../api';
+import { Book } from '../../../models';
 
-
-const validTypes = ['shirts', 'pants', 'hoodies', 'hats']
 const validGender = [
     'drama', 
     'ficción', 
@@ -18,16 +19,54 @@ const validGender = [
     'informática',
     'educacional'
 ]
-const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
 
 interface Props {
     product: IBook;
 }
 
-const BookAdminPage:NextPage<Props> = ({ product }) => {
-// console.log('book ', book)
-    const onDeleteTag = (tag: string) => {
+interface FormData{
+    _id?: string;
+    title: string;
+    author: string;
+    description: string;
+    gender: string;
+    tags: string[];
+    image: string;
+    price: number;
+    inStock: number;
+}
 
+const BookAdminPage:NextPage<Props> = ({ product }) => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: product
+    })
+    const [isSaving, setIsSaving ] =  useState(false)
+
+    const onDeleteTag = ( tag: string ) => {
+
+    }
+
+    const onSubmit = async( form: FormData ) => {        
+        setIsSaving(true)
+
+        try{
+            const { data } = await tesloApi({
+                url: '/admin/books',
+                method: 'PUT',
+                data: form
+            })
+
+            console.log({data})
+            if(!form._id){
+
+            }else{
+                setIsSaving(false)
+            }
+        }catch(error){
+            console.log(error)
+            setIsSaving(false)
+        }
     }
 
     return (
@@ -36,13 +75,16 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
             subTitle={`Editando: `}
             // icon={<DriveFileRenameOutline />}
         >
-            <form>
+            <form
+                onSubmit={ handleSubmit ( onSubmit )}
+            >
                 <Box display='flex' justifyContent='end' sx={{ mb: 1 }}>
                     <Button
                         color="secondary"
                         startIcon={<SaveOutlined />}
                         sx={{ width: '150px' }}
                         type="submit"
+                        disabled={isSaving}
                     >
                         Guardar
                     </Button>
@@ -57,12 +99,12 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             variant="filled"
                             fullWidth
                             sx={{ mb: 1 }}
-                        // { ...register('name', {
-                        //     required: 'Este campo es requerido',
-                        //     minLength: { value: 2, message: 'Mínimo 2 caracteres' }
-                        // })}
-                        // error={ !!errors.name }
-                        // helperText={ errors.name?.message }
+                        { ...register('title', {
+                            required: 'Este campo es requerido',
+                            minLength: { value: 2, message: 'Mínimo 2 caracteres' }
+                        })}
+                        error={ !!errors.title }
+                        helperText={ errors.title?.message }
                         />
 
                         <TextField
@@ -71,6 +113,12 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             fullWidth
                             multiline
                             sx={{ mb: 1 }}
+                            { ...register('description', {
+                                required: 'Este campo es requerido',
+                                minLength: { value: 2, message: 'Mínimo 2 caracteres' }
+                            })}
+                            error={ !!errors.description }
+                            helperText={ errors.description?.message }
                         />
 
                         <TextField
@@ -79,6 +127,12 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             variant="filled"
                             fullWidth
                             sx={{ mb: 1 }}
+                            { ...register('inStock', {
+                                required: 'Este campo es requerido',
+                                min: { value: 0, message: 'Mínimo de valor cero' }
+                            })}
+                            error={ !!errors.inStock }
+                            helperText={ errors.inStock?.message }
                         />
 
                         <TextField
@@ -87,11 +141,15 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             variant="filled"
                             fullWidth
                             sx={{ mb: 1 }}
+                            { ...register('price', {
+                                required: 'Este campo es requerido',
+                                min: { value: 0, message: 'Mínimo de valor cero' }
+                            })}
+                            error={ !!errors.price }
+                            helperText={ errors.price?.message }
                         />
 
                         <Divider sx={{ my: 1 }} />
-
-    
 
                         <FormControl sx={{ mb: 1 }}>
                             <FormLabel>Género</FormLabel>
@@ -121,6 +179,12 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             variant="filled"
                             fullWidth
                             sx={{ mb: 1 }}
+                            { ...register('slug', {
+                                required: 'Este campo es requerido',
+                                validate: (val) => val.trim().includes(' ') ? 'no puede tener espacios en blanco' : undefined
+                            })}
+                            error={ !!errors.inStock }
+                            helperText={ errors.inStock?.message }
                         />
 
                         {/* <TextField
@@ -168,11 +232,11 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                                 Cargar imagen
                             </Button>
 
-                            <Chip
+                            {/* <Chip
                                 label="Es necesario al 2 imagenes"
                                 color='error'
                                 variant='outlined'
-                            />
+                            /> */}
 
                             <Grid container spacing={2}>
                                 <Grid item xs={4} sm={3} mt={3} key={product.image}>
@@ -207,12 +271,26 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     const { slug = '' } = query;
 
+    let book: IBook | null;
+
+    if(slug === 'new'){
+        const tempBook = JSON.parse( JSON.stringify( new Book() ))
+        delete tempBook._id;
+
+        tempBook.image = 'img1.jpg'
+
+        book = tempBook;
+
+    }else{
+        book = await dbProducts.getProductBySlug(slug.toString())
+    }
+
     const product = await dbProducts.getProductBySlug(slug.toString());
 
     if (!product) {
         return {
             redirect: {
-                destination: '/admin/products',
+                destination: '/admin/books',
                 permanent: false,
             }
         }

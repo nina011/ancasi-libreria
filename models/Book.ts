@@ -7,7 +7,7 @@ const bookSchema = new Schema({
     inStock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
     slug: { type: String, required: true, unique: true },
-    tags: [{ type: String }],
+    // tags: [{ type: String }],
     title: { type: String, required: true },
     gender: {
         type: String, 

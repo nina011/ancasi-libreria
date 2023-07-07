@@ -7,6 +7,7 @@ export interface IBook {
     slug: string;
     tags: string[];
     title: string;
+    author: string;
     gender: 
      'drama' 
     |'ficción'

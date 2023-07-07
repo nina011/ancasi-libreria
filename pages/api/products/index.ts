@@ -2,10 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { db, SHOP_CONSTANTS } from '../../../database'
 import { Book } from '../../../models'
 import { IBook } from '../../../interfaces'
+import { isValidObjectId } from 'mongoose'
 
 type Data = 
     | { message: string }
     | IBook[]
+    | IBook;
 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -13,7 +15,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
    switch(req.method){
     case 'GET':
         return getProducts(req, res)
-
+    case 'PUT':
+        
     default:
         return res.status(400).json({
             message: 'Bad request'
