@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../database'
-import { Product } from '../../../models'
-import { IProduct } from '../../../interfaces'
+import { Book } from '../../../models'
+import { IBook } from '../../../interfaces'
 
 type Data = 
 | { message: string }
-| IProduct[]
+| IBook[]
 
 export default function handler (req: NextApiRequest, res: NextApiResponse<Data>) {
     // res.status(200).json({ message: 'Example' })
@@ -29,7 +29,7 @@ const searchProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) =
 
     await db.connect()
 
-    const products = await Product.find({
+    const products = await Book.find({
         $text: { $search: query }
     }).lean()
 
