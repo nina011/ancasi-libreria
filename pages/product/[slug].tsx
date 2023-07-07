@@ -11,7 +11,7 @@ import { ItemCounter } from '../../components/ui'
 
 import { ShopLayout } from '../../components/layouts'
 import { ProductSlideShow } from '../../components/products'
-import SizeSelector from '../../components/products/SizeSelector'
+// import SizeSelector from '../../components/products/SizeSelector'
 
 // import { useProducts } from '../../hooks'
 import { dbProducts } from '../../database'
