@@ -39,7 +39,7 @@ export const cartReducer = (state: CartState, action: CartActionType ): CartStat
                 ...state,
                 cart: state.cart.map( prod => {
                     if(prod._id !== action.payload._id) return prod;
-                    if( prod.size !== action.payload.size ) return prod;
+                    // if( prod.size !== action.payload.size ) return prod;
 
                     // prod.quantity == action.payload.quantity
                     return action.payload;
@@ -48,7 +48,7 @@ export const cartReducer = (state: CartState, action: CartActionType ): CartStat
         case '[Cart] - Remove product in cart':
             return {
                 ...state,
-            cart: state.cart.filter(prod => !(prod._id === action.payload._id && prod.size === action.payload.size))
+            cart: state.cart.filter(prod => !(prod._id === action.payload._id))
                 // cart: state.cart.filter( product => {
                 //     if( product._id === action.payload._id && product.size === action.payload.size){
                 //         return false
