@@ -197,11 +197,14 @@ export const SideMenu = () => {
                                 <Divider />
                                 <ListSubheader>Admin Panel</ListSubheader>
 
-                                <ListItem button>
+                                <ListItem
+                                    button
+                                    onClick={() => navigateTo('/admin/books')}
+                                 >
                                     <ListItemIcon>
                                         <CategoryOutlined />
                                     </ListItemIcon>
-                                    <ListItemText primary={'Productos'} />
+                                    <ListItemText primary={'Libros'} />
                                 </ListItem>
                                 <ListItem button>
                                     <ListItemIcon>
