@@ -71,9 +71,14 @@ const updatedBook = async (req: NextApiRequest, res: NextApiResponse<Data>)=> {
 }
 
 const createBook = async(req: NextApiRequest, res: NextApiResponse<Data>) => {
-    
+    console.log('funcion create book')
+    // const { image = [] } = req.body as IBook;
+
+    // if(image.length < 1) return res.status(400).json({ message: 'El libro necesita una imagen'})
+   
     try{
         await db.connect()
+
         const bookInDb = await Book.findOne({
             slug: req.body.slug
         })

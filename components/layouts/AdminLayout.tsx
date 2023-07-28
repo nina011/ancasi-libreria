@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Head from "next/head"
 
-import { /*Navbar,*/ SideMenu  } from "../ui";
+import { /*Navbar,*/ Navbar, SideMenu  } from "../ui";
 
 interface Props {
     children: React.ReactNode
@@ -51,9 +51,9 @@ export const AdminLayout: FC<Props> = ({ children, title, pageDescription, image
 
         </Head>
 
-        {/* <nav>
+        <nav>
             <Navbar />
-        </nav> */}
+        </nav>
 
         <SideMenu />
 

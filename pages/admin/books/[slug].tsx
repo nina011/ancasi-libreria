@@ -8,6 +8,7 @@ import { dbProducts } from '../../../database';
 import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
 import { tesloApi } from '../../../api';
 import { Book } from '../../../models';
+import { useRouter } from 'next/router';
 
 const validGender = [
     'drama', 
@@ -21,7 +22,7 @@ const validGender = [
 ]
 
 interface Props {
-    product: IBook;
+    book: IBook;
 }
 
 interface FormData{
@@ -34,12 +35,14 @@ interface FormData{
     image: string;
     price: number;
     inStock: number;
+    slug: string;
 }
 
-const BookAdminPage:NextPage<Props> = ({ product }) => {
+const BookAdminPage:NextPage<Props> = ({ book }) => {
 
+    const router = useRouter()
     const { register, handleSubmit, formState: { errors } } = useForm({
-        defaultValues: product
+        defaultValues: book
     })
     const [isSaving, setIsSaving ] =  useState(false)
 
@@ -53,13 +56,12 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
         try{
             const { data } = await tesloApi({
                 url: '/admin/books',
-                method: 'PUT',
+                method: form._id ? 'PUT' : 'POST',
                 data: form
             })
 
-            console.log({data})
             if(!form._id){
-
+                router.replace(`/admin/books/${ form.slug }`)
             }else{
                 setIsSaving(false)
             }
@@ -72,7 +74,7 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
     return (
         <AdminLayout
             title={'Libro'}
-            subTitle={`Editando: `}
+            subTitle={ book._id ? `Editando: `: 'Creando libro'}
             // icon={<DriveFileRenameOutline />}
         >
             <form
@@ -239,13 +241,13 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
                             /> */}
 
                             <Grid container spacing={2}>
-                                <Grid item xs={4} sm={3} mt={3} key={product.image}>
+                                <Grid item xs={4} sm={3} mt={3} key={book.image}>
                                     <Card>
                                         <CardMedia
                                             component='img'
                                             className='fadeIn'
-                                            image={`/books/${product.image}`}
-                                            alt={product.image}
+                                            image={`/books/${book.image}`}
+                                            alt={book.image}
                                         />
                                         <CardActions>
                                             <Button fullWidth color="error">
@@ -270,7 +272,6 @@ const BookAdminPage:NextPage<Props> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     const { slug = '' } = query;
-
     let book: IBook | null;
 
     if(slug === 'new'){
@@ -280,14 +281,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         tempBook.image = 'img1.jpg'
 
         book = tempBook;
+        console.log('slug nd', slug)
+        console.log('book', book)
 
     }else{
         book = await dbProducts.getProductBySlug(slug.toString())
     }
 
-    const product = await dbProducts.getProductBySlug(slug.toString());
+    // const product = await dbProducts.getProductBySlug(slug.toString());
 
-    if (!product) {
+    if (!book) {
         return {
             redirect: {
                 destination: '/admin/books',
@@ -299,7 +302,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     return {
         props: {
-            product
+            book
         }
     }
 }
