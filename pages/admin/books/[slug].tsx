@@ -52,10 +52,10 @@ const BookAdminPage:NextPage<Props> = ({ book }) => {
     }
 
     const onFileSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
-        console.log('target.files ', target.files[0].name)
         if(!target.files || target.files.length === 0){
             return;
         }
+        console.log('target.files ', target.files[0].name)
         const formData = new FormData()
         // 
         try{
@@ -184,7 +184,7 @@ const BookAdminPage:NextPage<Props> = ({ book }) => {
                             // onChange={ onStatusChanged }
                             >
                                 {
-                                    validGender.map(option => (
+                                    validGender?.map(option => (
                                         <FormControlLabel
                                             key={option}
                                             value={option}
