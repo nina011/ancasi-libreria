@@ -54,7 +54,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
       quantity: newQuantity
     }))
   }
-
+console.log({ product })
   const onAddProduct = () => {
     // if(!tempCartProduct.size){
     //   return

@@ -1,11 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { ChangeEvent, FC, useRef, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import { useForm } from 'react-hook-form';
 import { AdminLayout } from '../../../components/layouts/AdminLayout';
 import { IBook } from '../../../interfaces';
 import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import { dbProducts } from '../../../database';
-import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
+import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, Input, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
 import { tesloApi } from '../../../api';
 import { Book } from '../../../models';
 import { useRouter } from 'next/router';
@@ -41,6 +41,7 @@ interface FormData{
 const BookAdminPage:NextPage<Props> = ({ book }) => {
 
     const router = useRouter()
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: book
     })
@@ -50,9 +51,31 @@ const BookAdminPage:NextPage<Props> = ({ book }) => {
 
     }
 
+    const onFileSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
+        console.log('target.files ', target.files[0].name)
+        if(!target.files || target.files.length === 0){
+            return;
+        }
+        const formData = new FormData()
+        // 
+        try{
+            for(const file of target.files){
+                console.log('no es null')
+                // const formData = new FormData()
+                formData.append('image', file)
+                console.log('form data ', formData)
+
+                const { data } = await tesloApi.post<{ message: string }>('/admin/upload', formData)
+            }
+            
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     const onSubmit = async( form: FormData ) => {        
         setIsSaving(true)
-
+        console.log({form})
         try{
             const { data } = await tesloApi({
                 url: '/admin/books',
@@ -230,9 +253,18 @@ const BookAdminPage:NextPage<Props> = ({ book }) => {
                                 fullWidth
                                 startIcon={<UploadOutlined />}
                                 sx={{ mb: 3 }}
+                                onClick={ () => fileInputRef.current?.click() }
                             >
                                 Cargar imagen
                             </Button>
+                            <input 
+                                ref={ fileInputRef }
+                                type='file'                                
+                                accept='image/png, image/jpg, image/jpeg'
+                                style={{ display: 'none' }}
+                                onChange={ onFileSelected }
+                                
+                            />
 
                             {/* <Chip
                                 label="Es necesario al 2 imagenes"
@@ -278,7 +310,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         const tempBook = JSON.parse( JSON.stringify( new Book() ))
         delete tempBook._id;
 
-        tempBook.image = 'img1.jpg'
+        // tempBook.image = 'img1.jpg'
 
         book = tempBook;
         console.log('slug nd', slug)
